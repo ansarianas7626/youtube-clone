@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        "youTube-red": "#fe0000"
+      }
+    },
   },
   plugins: [],
 }

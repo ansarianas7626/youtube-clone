@@ -1,31 +1,19 @@
 import React, { useState } from 'react'
-import { MdHomeFilled, MdOutlineSubscriptions } from "react-icons/md";
-import { SiYoutubeshorts } from "react-icons/si";
-import { PiUserSquareLight } from "react-icons/pi";
-import { GoHistory } from "react-icons/go";
-import { RiVideoLine } from "react-icons/ri";
-import { LuClock5 } from "react-icons/lu";
-import { BiLike } from "react-icons/bi";
+import { MdHomeFilled, MdOutlineSubscriptions, MdOutlineOutlinedFlag, MdOutlineHelpOutline, MdOutlineFeedback } from "react-icons/md";
+import { SiYoutubegaming, SiYoutubestudio, SiYoutubemusic } from "react-icons/si";
+import { PiMusicNote, PiFilmSlate, PiLightbulb, PiUserSquareLight } from "react-icons/pi";
+import { IoNewspaperOutline, IoSettingsOutline, IoBagHandleOutline } from "react-icons/io5";
 import { LiaAngleRightSolid, LiaAngleDownSolid } from "react-icons/lia";
-import { RiFireLine } from "react-icons/ri";
-import { IoBagHandleOutline } from "react-icons/io5";
-import { PiMusicNote } from "react-icons/pi";
-import { PiFilmSlate } from "react-icons/pi";
+import { RiVideoLine, RiFireLine } from "react-icons/ri";
+import { LuClock5, LuPodcast } from "react-icons/lu";
+import { SiYoutubeshorts } from "react-icons/si";
+import { GoHistory } from "react-icons/go";
+import { BiLike } from "react-icons/bi";
 import { HiMiniSignal } from "react-icons/hi2";
-import { PiGameControllerDuotone } from "react-icons/pi";
-import { IoNewspaperOutline } from "react-icons/io5";
 import { CiTrophy } from "react-icons/ci";
-import { PiLightbulb } from "react-icons/pi";
 import { GiHanger } from "react-icons/gi";
-import { LuPodcast } from "react-icons/lu";
-import { IoSettingsOutline } from "react-icons/io5";
-import { MdOutlineOutlinedFlag } from "react-icons/md";
-import { MdOutlineHelpOutline } from "react-icons/md";
-import { MdOutlineFeedback } from "react-icons/md";
 import { FaYoutube } from "react-icons/fa";
-import { GoPlay } from "react-icons/go";
-import { YOUTUBE_KIDS_LOGO, YOUTUBE_STUDIO_LOGO } from '../utils/constants';
-
+import { YOUTUBE_KIDS_LOGO } from '../utils/constants';
 
 
 
@@ -41,7 +29,7 @@ const SideBar = () => {
 
       <section className='border-b-[1px] border-stone-200 py-3'>
         <ul>
-          <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><MdHomeFilled className='mr-5 text-xl'/>Home</li>
+          <li className='bg-gray-100 hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><MdHomeFilled className='mr-5 text-xl'/>Home</li>
           <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><SiYoutubeshorts className='mr-5 text-xl'/>Shorts</li>
           <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><MdOutlineSubscriptions className='mr-5 text-xl'/>Subscription</li>
         </ul>
@@ -81,7 +69,7 @@ const SideBar = () => {
           <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><PiMusicNote className='mr-5 text-xl'/>Music</li>
           <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><PiFilmSlate className='mr-5 text-xl'/>Films</li>
           <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><HiMiniSignal className='mr-5 text-xl'/>Live</li>
-          <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><PiGameControllerDuotone className='mr-5 text-xl'/>Gaming</li>
+          <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><SiYoutubegaming className='mr-5 text-xl'/>Gaming</li>
           <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><IoNewspaperOutline className='mr-5 text-xl'/>News</li>
           <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><CiTrophy className='mr-5 text-xl'/>Sport</li>
           <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><PiLightbulb className='mr-5 text-xl'/>Learning</li>
@@ -93,9 +81,9 @@ const SideBar = () => {
       <section className='border-b-[1px] border-stone-200 py-3'>
         <ul>
         <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all font-semibold text-lg'>More from YouTube</li>
-          <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><FaYoutube className='mr-5 text-2xl text-red-600'/>YouTube Premium</li>
-          <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><img className='w-6 mr-5' src={YOUTUBE_STUDIO_LOGO} alt="" /> YouTube Studio</li>
-          <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><GoPlay className='mr-5 text-2xl bg-red-600 text-white rounded-full'/>YouTube Music</li>
+          <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><FaYoutube className='mr-5 text-2xl text-youTube-red'/>YouTube Premium</li>
+          <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><SiYoutubestudio className='mr-5 text-2xl text-youTube-red'/> YouTube Studio</li>
+          <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><SiYoutubemusic className='mr-5 text-2xl text-youTube-red'/>YouTube Music</li>
           <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><img className='w-6 mr-5' src={YOUTUBE_KIDS_LOGO} alt="" /> YouTube Kids</li>
         </ul>
       </section>

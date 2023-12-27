@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { IoIosSearch } from "react-icons/io";
 import { FaMicrophone } from "react-icons/fa6";
 import { RiLiveLine } from "react-icons/ri";
-import { CiUser, CiBellOn } from "react-icons/ci";
+import { CiBellOn } from "react-icons/ci";
 import { LiaBarsSolid } from "react-icons/lia";
 import { YOUTUBE_LOGO } from '../utils/constants';
 
@@ -40,10 +40,10 @@ const Header = ({ handleToggle }) => {
         <span className='w-10 h-10 flex justify-center items-center rounded-full text-lg cursor-pointer bg-gray-100 hover:bg-gray-200 transition-all'><FaMicrophone /></span>
       </div>
 
-      <div className='flex items-center space-x-4'>
+      <div className='flex items-center gap-2 pr-5'>
         <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'><RiLiveLine /></div>
         <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'><CiBellOn /></div>
-        <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full border-[1px] border-stone-300 text-xl transition-all'><CiUser /></div>
+        <div className='w-8 h-8 flex justify-center items-center cursor-pointer rounded-full text-2xl bg-gray-600 transition-all'></div>
       </div>
 
     </div>
