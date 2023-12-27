@@ -4,21 +4,23 @@ import { FaMicrophone } from "react-icons/fa6";
 import { RiLiveLine } from "react-icons/ri";
 import { CiUser, CiBellOn } from "react-icons/ci";
 import { LiaBarsSolid } from "react-icons/lia";
+import { YOUTUBE_LOGO } from '../utils/constants';
+
 
 
 
 const Header = () => {
   return (
-    <div className='w-full h-14 flex items-center justify-between px-6 border-b-[1px] overflow-hidden sticky top-0 z-10'>
+    <div className='w-full h-14 flex items-center justify-between pl-4 pr-6 border-b-[1px] overflow-hidden sticky top-0 z-10'>
 
       {/* hamburger & logo */}
-      <div className='flex items-center space-x-3'>
-        <div className='text-2xl'>
+      <div className='flex items-center space-x-1'>
+        <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'>
           <LiaBarsSolid />
         </div>
 
         <div className='flex items-center cursor-pointer'>
-          <img className='h-14' src="https://t3.ftcdn.net/jpg/03/00/38/90/360_F_300389025_b5hgHpjDprTySl8loTqJRMipySb1rO0I.jpg" alt="YouTube-Logo" />
+          <img className='h-14' src={YOUTUBE_LOGO} alt="YouTube-Logo" />
         </div>
       </div>
 
