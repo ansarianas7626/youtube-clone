@@ -5,11 +5,18 @@ import { RiLiveLine } from "react-icons/ri";
 import { CiBellOn } from "react-icons/ci";
 import { LiaBarsSolid } from "react-icons/lia";
 import { YOUTUBE_LOGO } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import { toggleMenu } from '../redux/appSlice';
 
 
 
+const Header = () => {
 
-const Header = ({ handleToggle }) => {
+  const dispatch = useDispatch();
+
+  const handleToggle = ()=>{
+    dispatch(toggleMenu())
+  }
 
   
   return (

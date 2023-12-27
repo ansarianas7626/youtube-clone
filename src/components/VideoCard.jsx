@@ -1,10 +1,14 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const VideoCard = () => {
+
+  const { isMenuOpen } = useSelector((state)=> state.app)
+
   return (
-    <div className='flex flex-col space-y-3 w-[340px] h-fit'>
-        <div className='w-full h-48 rounded-xl bg-gray-300'>
-            <img src="" alt="" />
+    <div className={`flex flex-col space-y-3 ${isMenuOpen? "w-[340px]" : "w-[310px]"} h-fit transition-all`}>
+        <div className='w-[full] h-48 rounded-xl bg-gray-300'>
+
         </div>
 
       <div className='flex'>

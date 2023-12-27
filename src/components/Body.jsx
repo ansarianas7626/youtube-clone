@@ -2,12 +2,16 @@ import React from 'react'
 import SideBar from './SideBar'
 import VideoContainer from './VideoContainer'
 import ShortSideBar from './ShortSideBar'
+import { useSelector } from 'react-redux'
 
-const Body = ({ showSidebar }) => {
+const Body = () => {
+
+  const { isMenuOpen } = useSelector((state)=> state.app)
+
   return (
     <div className='flex'>
-      {showSidebar ? <ShortSideBar/> : <SideBar/>}
-      <VideoContainer showSidebar={showSidebar}/>
+      {isMenuOpen ? <ShortSideBar/> : <SideBar/>}
+      <VideoContainer/>
     </div>
   )
 }
