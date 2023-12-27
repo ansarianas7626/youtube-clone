@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IoIosSearch } from "react-icons/io";
 import { FaMicrophone } from "react-icons/fa6";
 import { RiLiveLine } from "react-icons/ri";
@@ -9,13 +9,15 @@ import { YOUTUBE_LOGO } from '../utils/constants';
 
 
 
-const Header = () => {
+const Header = ({ handleToggle }) => {
+
+  
   return (
     <div className='w-full h-14 flex items-center justify-between pl-4 pr-6 border-b-[1px] overflow-hidden sticky top-0 z-10'>
 
       {/* hamburger & logo */}
       <div className='flex items-center space-x-1'>
-        <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'>
+        <div onClick={handleToggle} className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'>
           <LiaBarsSolid />
         </div>
 
@@ -41,7 +43,7 @@ const Header = () => {
       <div className='flex items-center space-x-4'>
         <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'><RiLiveLine /></div>
         <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'><CiBellOn /></div>
-        <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full border-[1px] border-stone-600 text-xl transition-all'><CiUser /></div>
+        <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full border-[1px] border-stone-300 text-xl transition-all'><CiUser /></div>
       </div>
 
     </div>

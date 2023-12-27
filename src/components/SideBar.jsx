@@ -30,8 +30,8 @@ import { YOUTUBE_KIDS_LOGO, YOUTUBE_STUDIO_LOGO } from '../utils/constants';
 
 
 const SideBar = () => {
-  const [showSliderThumb, setShowSliderThumb] = useState(false);
 
+  const [showSliderThumb, setShowSliderThumb] = useState(false);
 
   return (
     <div 

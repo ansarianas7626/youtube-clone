@@ -1,12 +1,13 @@
 import React from 'react'
 import SideBar from './SideBar'
 import VideoContainer from './VideoContainer'
+import ShortSideBar from './ShortSideBar'
 
-const Body = () => {
+const Body = ({ showSidebar }) => {
   return (
     <div className='flex'>
-      <SideBar/>
-      <VideoContainer/>
+      {showSidebar ? <ShortSideBar/> : <SideBar/>}
+      <VideoContainer showSidebar={showSidebar}/>
     </div>
   )
 }
