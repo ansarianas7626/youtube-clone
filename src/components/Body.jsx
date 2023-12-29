@@ -3,6 +3,7 @@ import SideBar from './SideBar'
 import VideoContainer from './VideoContainer'
 import ShortSideBar from './ShortSideBar'
 import { useSelector } from 'react-redux'
+import { Outlet } from 'react-router-dom'
 
 const Body = () => {
 
@@ -11,7 +12,8 @@ const Body = () => {
   return (
     <div className='flex'>
       {isMenuOpen ? <ShortSideBar/> : <SideBar/>}
-      <VideoContainer/>
+      <Outlet/>
+      {/* <VideoContainer/> */}
     </div>
   )
 }

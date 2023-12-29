@@ -14,6 +14,7 @@ import { CiTrophy } from "react-icons/ci";
 import { GiHanger } from "react-icons/gi";
 import { FaYoutube } from "react-icons/fa";
 import { YOUTUBE_KIDS_LOGO } from '../utils/constants';
+import { Link } from 'react-router-dom';
 
 
 
@@ -29,7 +30,7 @@ const SideBar = () => {
 
       <section className='border-b-[1px] border-stone-200 py-3'>
         <ul>
-          <li className='bg-gray-100 hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><MdHomeFilled className='mr-5 text-xl'/>Home</li>
+          <li className='bg-gray-100 hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><MdHomeFilled className='mr-5 text-xl'/><Link to="/">Home</Link></li>
           <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><SiYoutubeshorts className='mr-5 text-xl'/>Shorts</li>
           <li className='hover:bg-gray-100 px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center'><MdOutlineSubscriptions className='mr-5 text-xl'/>Subscription</li>
         </ul>

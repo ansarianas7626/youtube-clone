@@ -7,6 +7,7 @@ import { LiaBarsSolid } from "react-icons/lia";
 import { YOUTUBE_LOGO } from '../utils/constants';
 import { useDispatch } from 'react-redux';
 import { toggleMenu } from '../redux/appSlice';
+import { Link } from 'react-router-dom';
 
 
 
@@ -27,9 +28,10 @@ const Header = () => {
         <div onClick={handleToggle} className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'>
           <LiaBarsSolid />
         </div>
-
         <div className='flex items-center cursor-pointer'>
-          <img className='h-14' src={YOUTUBE_LOGO} alt="YouTube-Logo" />
+            {/* <Link to="/"> */}
+              <img className='h-14' src={YOUTUBE_LOGO} alt="YouTube-Logo" />
+            {/* </Link> */}
         </div>
       </div>
 
