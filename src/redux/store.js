@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import appSlice from "../redux/appSlice"
+import videosSlice from "./videosSlice";
 
 
 
 const store = configureStore({
     reducer:{
-        app : appSlice 
+        app : appSlice,
+        videos: videosSlice 
     }
 })
 

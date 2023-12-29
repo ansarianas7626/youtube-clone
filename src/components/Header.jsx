@@ -21,7 +21,7 @@ const Header = () => {
 
   
   return (
-    <div className='w-full h-14 flex items-center justify-between pl-4 pr-6 border-b-[1px] overflow-hidden sticky top-0 z-10'>
+    <div className='w-full h-14 flex items-center justify-between pl-4 pr-6 overflow-hidden sticky top-0 z-10'>
 
       {/* hamburger & logo */}
       <div className='flex items-center space-x-1'>

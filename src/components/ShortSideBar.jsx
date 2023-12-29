@@ -13,8 +13,8 @@ const ShortSideBar = () => {
 
       <section className='px-1'>
         <ul>
-          <li className='hover:bg-gray-100 py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center'><MdHomeFilled className='text-2xl mb-1'/><Link to="/">Home</Link></li>
-          <li className='hover:bg-gray-100 py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center'><SiYoutubeshorts className='text-2xl mb-1'/>Shorts</li>
+        <Link to="/"><li className='hover:bg-gray-100 py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center'><MdHomeFilled className='text-2xl mb-1'/>Home</li></Link>
+        <Link to="/shorts"><li className='hover:bg-gray-100 py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center'><SiYoutubeshorts className='text-2xl mb-1'/>Shorts</li></Link>
           <li className='hover:bg-gray-100 py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center'><MdOutlineSubscriptions className='text-2xl mb-1'/>Subscription</li>
           <li className='hover:bg-gray-100 py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center'><LiaYoutubeSquare className='text-2xl mb-1'/>You</li>
         </ul>

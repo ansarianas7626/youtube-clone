@@ -3,6 +3,7 @@ import Body from "./components/Body"
 import Header from "./components/Header"
 import VideoContainer from "./components/VideoContainer"
 import WatchPage from "./components/WatchPage"
+import ShortsPage from "./components/ShortsPage"
 
 function App() {
   
@@ -18,7 +19,10 @@ function App() {
         path: "/watch",
         element: <WatchPage/>
       },
-
+      {
+        path: "/shorts",
+        element: <ShortsPage/>
+      },
     ]
   }])
 

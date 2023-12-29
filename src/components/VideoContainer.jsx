@@ -1,28 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import CategoryList from './CategoryList'
 import { useSelector } from 'react-redux'
-import { YOUTUBE_API } from '../utils/constants'
 import VideoCard from "../components/VideoCard"
 import { Link } from 'react-router-dom'
 import VideoCardShimmer from './VideoCardShimmer'
+import useVideos from '../Hooks/useVideos'
 
 const VideoContainer = () => {
 
   const { isMenuOpen } = useSelector((state)=> state.app)
 
-  const [videos, setVideos] = useState(null);
-
-  const fetchVideos = async()=>{
-    const data = await fetch(YOUTUBE_API+import.meta.env.VITE_YOUTUBE_API_KEY)
-    const json = await data.json();
-    console.log(json.items);
-    setVideos(json.items);
-  }
-
-  useEffect(()=>{
-    videos === null && fetchVideos();
-  },[])
-
+  useVideos();
+  const videos = useSelector((state)=>state.videos?.videosData)
+  console.log(videos);
 
   return (
     <div className={`h-[calc(100vh-56px)] ${isMenuOpen? "w-[calc(100vw-80px)]" : "w-[calc(100vw-240px)]"} flex flex-col`}>
