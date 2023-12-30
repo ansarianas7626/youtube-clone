@@ -12,7 +12,7 @@ const VideoContainer = () => {
 
   useVideos();
   const videos = useSelector((state)=>state.videos?.videosData)
-  console.log(videos);
+  // console.log(videos);
 
   return (
     <div className={`h-[calc(100vh-56px)] ${isMenuOpen? "w-[calc(100vw-80px)]" : "w-[calc(100vw-240px)]"} flex flex-col`}>
