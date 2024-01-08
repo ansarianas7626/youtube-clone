@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeMenu } from '../redux/appSlice'
 import { useSearchParams } from 'react-router-dom'
@@ -8,22 +8,28 @@ import { TfiDownload } from "react-icons/tfi";
 import { HiOutlineScissors } from "react-icons/hi2";
 import { RiPlayListAddFill } from "react-icons/ri";
 import RecoomendVideoCard from './RecoomendVideoCard';
-import Comment from "../components/Comment"
+import CommentsContainer from './CommentsContainer';
+import useChannelLogo from '../redux/useChannelLogo';
+import RecommentVideosContainer from './RecommentVideosContainer';
+import LiveChatContainer from './LiveChatContainer';
 
 const WatchPage = () => {
 
   const dispatch = useDispatch()
   const [searchParams] = useSearchParams()
-  // console.log(searchParams.get("v"));
 
   const videos = useSelector((state)=>state.videos?.videosData)
   const matchedVideo = videos?.filter((video)=>video.id === searchParams.get("v"));
 
-  // console.log("Exact match is", matchedVideo[0]);
+  const { channelId } = matchedVideo[0]?.snippet;
+
 
   useEffect(()=>{
     dispatch(closeMenu())
   },[])
+
+  const channelLogo = useChannelLogo(channelId);
+
 
   return (
     <div className='w-[calc(100vw-80px)] flex justify-between pl-5 pr-28 pt-7 h-screen overflow-y-scroll'>
@@ -51,7 +57,11 @@ const WatchPage = () => {
           <div className='flex items-center justify-between'>
             {/* left */}
             <div className='flex'>
-              <div className='rounded-full h-10 w-10 bg-gray-300 mr-3'></div>
+              {/* channel logo */}
+              <div className='rounded-full h-10 w-10 overflow-hidden bg-gray-300 mr-3'>
+                <img src={channelLogo} alt="channel-logo" />
+              </div>
+              {/* channel name */}
               <div className='flex flex-col mr-6'>
                 <span className='font-semibold'>{matchedVideo[0]?.snippet?.channelTitle}</span>
                 <span className='text-xs'>41.1 M Subscribers</span>
@@ -79,23 +89,13 @@ const WatchPage = () => {
         </div>
 
         {/* comments container */}
-        <div className='w-full h-fit'>
-            <h3 className='font-bold text-xl my-4'>Comments</h3>
-
-            <div>
-              <Comment/>
-            </div>
-        </div>
+        <CommentsContainer videoId = {searchParams.get("v")}/>
 
       </div>
 
       {/* Right Container */}
-      <div className='flex flex-col gap-5 w-[24%] h-fit'>
-        <RecoomendVideoCard/>
-        <RecoomendVideoCard/>
-        <RecoomendVideoCard/>
-        <RecoomendVideoCard/>
-      </div>
+      {/* <RecommentVideosContainer/> */}
+      <LiveChatContainer/>
     </div>
   )
 }

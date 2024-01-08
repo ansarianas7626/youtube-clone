@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import useChannelLogo from '../redux/useChannelLogo';
 
 const VideoCard = ({ videoData }) => {
 
   const { isMenuOpen } = useSelector((state)=> state.app)
-  const [channelProfilePic, setChannelProfilePic] = useState(null)
 
   const { snippet, statistics  } = videoData;
   const { channelId, thumbnails, channelTitle, publishedAt } = snippet;
 
-  const fetchProfileImage = async() =>{
-    const data = await fetch("https://www.googleapis.com/youtube/v3/channels?part=snippet&fields=items%2Fsnippet%2Fthumbnails%2Fdefault&id="+channelId+"&key="+import.meta.env.VITE_YOUTUBE_API_KEY);
-    const json = await data.json();
-    setChannelProfilePic(json.items[0]?.snippet?.thumbnails?.default?.url)
-  }
-
-  useEffect(()=>{
-    channelProfilePic===null && fetchProfileImage();
-  },[])
+  const channelLogo = useChannelLogo(channelId);
 
   return (
     <div className={`flex flex-col space-y-3 ${isMenuOpen? "w-[340px]" : "w-[310px]"} h-fit transition-all cursor-pointer`}>
@@ -27,7 +19,7 @@ const VideoCard = ({ videoData }) => {
 
       <div className='flex'>
         <div className='h-10 w-10 flex bg-gray-300 rounded-full mr-2 overflow-hidden'>
-          <img className='w-full h-full' src={channelProfilePic} alt="channel-Profile-Pic" />
+          <img className='w-full h-full' src={channelLogo} alt="channel-Profile-Pic" />
         </div>
 
         <div className='w-fit h-fit flex flex-col'>

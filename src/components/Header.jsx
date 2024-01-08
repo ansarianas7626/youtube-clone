@@ -5,9 +5,10 @@ import { RiLiveLine } from "react-icons/ri";
 import { CiBellOn } from "react-icons/ci";
 import { LiaBarsSolid } from "react-icons/lia";
 import { YOUTUBE_LOGO, YOUTUBE_SEARCH_SUGGESTION_API } from '../utils/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../redux/appSlice';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { cacheResults } from '../redux/searchSlice';
 
 
 
@@ -17,12 +18,21 @@ const Header = () => {
   const [suggestions, setSuggestions] = useState([]);
   const dispatch = useDispatch();
 
+  const searchCache = useSelector((store)=> store.search)
+
   const handleToggle = ()=>{
     dispatch(toggleMenu())
   }
 
   useEffect(()=>{
-    const timer = setTimeout(() => getSearchResults(),200)
+    const timer = setTimeout(() =>{
+      if(searchCache[searchQuery]){
+        setSuggestions(searchCache[searchQuery])
+
+      }else{
+        getSearchResults()
+      }
+  },200)
 
     return ()=>{
       clearTimeout(timer);
@@ -30,15 +40,10 @@ const Header = () => {
   },[searchQuery])
 
   const getSearchResults = async ()=>{
-    // const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchQuery);
-    // const json = data.json();
-    // setSuggestions(json[1]);
-
-    try {
-      const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchQuery);
-      const text = await data.text();
-      const textItems = text.split("[");
-      const mainText = textItems
+    const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API+searchQuery);
+    const text = await data.text();
+    const textItems = text.split("[");
+    const mainText = textItems
         .map((element, index) => {
           if (
             !element.split('"')[1] ||
@@ -50,9 +55,12 @@ const Header = () => {
           return element.split('"')[1];
         })
         .filter((element) => element !== null);
-      setSuggestions(mainText);
-      // dispatch(cacheResults({ [searchQuery]: mainText }));
-    } catch (error) {}
+
+    setSuggestions(mainText);
+
+    dispatch(cacheResults({
+      [searchQuery]: mainText
+    }));
   }
 
   
@@ -64,11 +72,13 @@ const Header = () => {
         <div onClick={handleToggle} className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'>
           <LiaBarsSolid />
         </div>
-        <div className='flex items-center cursor-pointer'>
-            {/* <Link to="/"> */}
-              <img className='h-14' src={YOUTUBE_LOGO} alt="YouTube-Logo" />
-            {/* </Link> */}
-        </div>
+          <div className='flex items-center cursor-pointer'>
+              {/* <Link to="/"> */}
+              <a href="/">
+                <img className='h-14' src={YOUTUBE_LOGO} alt="YouTube-Logo" />
+              </a>
+              {/* </Link> */}
+          </div>
       </div>
 
       {/* Search Bar */}
