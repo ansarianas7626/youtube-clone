@@ -38,3 +38,6 @@ export const YOUTUBE_API = "https://youtube.googleapis.com/youtube/v3/videos?par
 export const YOUTUBE_SEARCH_SUGGESTION_API ="https://suggestqueries.google.com/complete/search?client=youtube&ds=yt&q=";
 
 export const YOUTUBE_API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY
+
+// it is make sure that how many chat should be displayed so that it wont over bloat our state
+export const LIVE_CHAT_OFFSET = 30

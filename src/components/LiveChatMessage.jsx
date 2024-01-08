@@ -1,8 +1,10 @@
 import React from 'react'
 
-const LiveChatMessage = ({name, chatMessage}) => {
+const LiveChatMessage = ({chatData}) => {
 
     const proifilePic = "https://wallpapers.com/images/hd/cool-profile-picture-87h46gcobjl5e4xu.jpg"
+
+    const {name, message} = chatData;
 
   return (
     <div className='w-full flex hover:bg-gray-200 cursor-pointer px-5 py-1'>
@@ -14,7 +16,7 @@ const LiveChatMessage = ({name, chatMessage}) => {
         </div>
 
         {/* name and chat message */}
-        <p className='text-sm'><span className='text-gray-600 font-semibold mr-2'>{name}</span>{chatMessage}</p>
+        <p className='text-sm'><span className='text-gray-600 font-semibold mr-2'>{name}</span>{message}</p>
         
     </div>
   )
