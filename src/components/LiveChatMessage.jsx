@@ -1,4 +1,7 @@
 import React from 'react'
+import { CiUser } from "react-icons/ci";
+
+
 
 const LiveChatMessage = ({chatData}) => {
 
@@ -7,11 +10,12 @@ const LiveChatMessage = ({chatData}) => {
     const {name, message} = chatData;
 
   return (
-    <div className='w-full flex hover:bg-gray-200 cursor-pointer px-5 py-1'>
+    <div className='w-full flex hover:bg-gray-100 cursor-pointer px-5 py-1'>
         {/*  Profile pic */}
         <div className='flex items-center mr-1'>
             <div className='w-6 h-6 flex justify-center items-center overflow-hidden bg-gray-300 rounded-full mr-3'>
-                <img className='w-full h-full bg-contain bg-center' src={proifilePic} alt="profile-img" />
+                {/* <img className='w-full h-full bg-contain bg-center' src={proifilePic} alt="profile-img" /> */}
+                <CiUser />
             </div>
         </div>
 

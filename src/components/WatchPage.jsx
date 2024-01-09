@@ -9,26 +9,30 @@ import { HiOutlineScissors } from "react-icons/hi2";
 import { RiPlayListAddFill } from "react-icons/ri";
 import RecoomendVideoCard from './RecoomendVideoCard';
 import CommentsContainer from './CommentsContainer';
-import useChannelLogo from '../redux/useChannelLogo';
+import useChannelLogo from '../Hooks/useChannelLogo';
 import RecommentVideosContainer from './RecommentVideosContainer';
 import LiveChatContainer from './LiveChatContainer';
+import useVideos from '../Hooks/useVideos';
 
 const WatchPage = () => {
 
   const dispatch = useDispatch()
+
   const [searchParams] = useSearchParams()
 
   const videos = useSelector((state)=>state.videos?.videosData)
+  
   const matchedVideo = videos?.filter((video)=>video.id === searchParams.get("v"));
+  // console.log(matchedVideo);
 
-  const { channelId } = matchedVideo[0]?.snippet;
+  const { channelId, title, channelTitle } = matchedVideo[0]?.snippet;
 
+
+  const channelLogo = useChannelLogo(channelId);
 
   useEffect(()=>{
     dispatch(closeMenu())
   },[])
-
-  const channelLogo = useChannelLogo(channelId);
 
 
   return (
@@ -51,7 +55,7 @@ const WatchPage = () => {
         {/* info container */}
         <div className='flex flex-col space-y-4 pt-3'>
           {/* Video title */}
-          <h3 className='font-semibold text-xl'>{matchedVideo[0]?.snippet?.title}</h3>
+          <h3 className='font-semibold text-xl'>{title}</h3>
           
           {/* channel detail and button container */}
           <div className='flex items-center justify-between'>
@@ -63,7 +67,7 @@ const WatchPage = () => {
               </div>
               {/* channel name */}
               <div className='flex flex-col mr-6'>
-                <span className='font-semibold'>{matchedVideo[0]?.snippet?.channelTitle}</span>
+                <span className='font-semibold'>{channelTitle}</span>
                 <span className='text-xs'>41.1 M Subscribers</span>
               </div>
               <button className='bg-black hover:bg-stone-900 text-white rounded-3xl px-4 py-2 h-fit font-semibold'>subscribe</button>

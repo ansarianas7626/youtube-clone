@@ -39,7 +39,7 @@ const LiveChatContainer = () => {
 
         {/* chat container */}
         <div className='w-full h-full flex flex-col-reverse py-1 overflow-y-scroll'>
-            {messages?.map((msg)=><LiveChatMessage key={msg.message} chatData={msg}/>)}
+            {messages?.map((msg, idx)=><LiveChatMessage key={idx} chatData={msg}/>)}
         </div>
 
         {/* chat input box */}
@@ -50,7 +50,7 @@ const LiveChatContainer = () => {
         }}
          className='h-fit w-full flex items-center border-t-[1px] border-stone-200 p-2'>
             <input  
-            className='h-full w-full rounded-full outline-none px-3 py-2 bg-gray-100 placeholder:text-gray-700 mr-2 focus:bg-gray-200' 
+            className='h-full w-full rounded-full outline-none px-3 py-2 bg-gray-100 placeholder:text-gray-600 mr-2 focus:bg-gray-200' 
             type="text" 
             placeholder='Chat as a subscriber'
             value={liveMessage}
