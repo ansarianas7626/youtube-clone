@@ -65,7 +65,7 @@ const Header = () => {
 
   
   return (
-    <div className='w-full h-14 grid grid-cols-12 md:flex items-center justify-between px-2 gap-2 md:gap-0 md:pl-4 md:pr-6 sticky top-0 z-10'>
+    <div className='w-full h-fit grid grid-cols-12 md:flex items-center justify-between px-2 pb-3 md:pb-0 gap-2 md:gap-0 md:pl-4 md:pr-6 sticky top-0 z-10 shadow-md'>
 
       {/* hamburger & logo */}
       <div className='flex items-center space-x-1 col-span-10 order-1'>

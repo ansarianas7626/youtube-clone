@@ -26,7 +26,7 @@ const LiveChatContainer = () => {
 
 
   return (
-    <div className='flex flex-col w-[24%] h-[650px] rounded-lg border-[1px] border-stone-200'>
+    <div className='flex flex-col w-full h-[650px] rounded-lg border-[1px] border-stone-200'>
         {/* head */}
         <div className='border-b-[1px] border-stone-200'>
             <div className='flex justify-between items-center pl-5 pr-2 py-1'>

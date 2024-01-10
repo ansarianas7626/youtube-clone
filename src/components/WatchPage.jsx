@@ -36,11 +36,11 @@ const WatchPage = () => {
 
 
   return (
-    <div className='w-[calc(100vw-80px)] flex justify-between pl-5 pr-28 pt-7 h-screen overflow-y-scroll'>
+    <div className='lg:w-[calc(100vw-80px)] flex justify-between px-5 lg:pl-5 pt-5 lg:pt-7 h-screen overflow-y-scroll'>
       {/* Left container */}
-      <div className='w-[75%] h-auto'>
+      <div className='w-full lg:w-[75%] h-auto'>
         {/* Video */}
-        <div className='bg-white w-full h-[650px] rounded-lg overflow-hidden'>
+        <div className='bg-white w-full h-[450px] lg:h-[650px] rounded-lg overflow-hidden'>
           <iframe 
           className='w-full h-full'
           // width="560" 
@@ -58,23 +58,23 @@ const WatchPage = () => {
           <h3 className='font-semibold text-xl'>{title}</h3>
           
           {/* channel detail and button container */}
-          <div className='flex items-center justify-between'>
+          <div className='flex justify-between'>
             {/* left */}
-            <div className='flex'>
+            <div className='flex items-start'>
               {/* channel logo */}
               <div className='rounded-full h-10 w-10 overflow-hidden bg-gray-300 mr-3'>
                 <img src={channelLogo} alt="channel-logo" />
               </div>
               {/* channel name */}
-              <div className='flex flex-col mr-6'>
-                <span className='font-semibold'>{channelTitle}</span>
+              <div className='flex flex-col lg:mr-6'>
+                <span className='font-semibold line-clamp-1 md:line-clamp-none'>{channelTitle}</span>
                 <span className='text-xs'>41.1 M Subscribers</span>
               </div>
-              <button className='bg-black hover:bg-stone-900 text-white rounded-3xl px-4 py-2 h-fit font-semibold'>subscribe</button>
+              <button className='bg-black hover:bg-stone-900 text-white rounded-3xl px-4 py-2 h-fit font-semibold mx-3'>subscribe</button>
             </div>
 
             {/* right */}
-            <div className='flex space-x-3'>
+            <div className='flex space-x-3 overflow-auto scrollbar-hide'>
               <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-3xl px-4 py-2 font-semibold h-fit flex items-center'><AiOutlineLike className='mr-2'/>Like</button>
               <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-3xl px-4 py-2 font-semibold h-fit flex items-center'><PiShareFatLight className='mr-2'/>Share</button>
               <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-3xl px-4 py-2 font-semibold h-fit flex items-center'><TfiDownload className='mr-2'/>Download</button>
@@ -99,7 +99,9 @@ const WatchPage = () => {
 
       {/* Right Container */}
       {/* <RecommentVideosContainer/> */}
-      <LiveChatContainer/>
+      <div className='lg:w-[24%] hidden lg:block'>
+        <LiveChatContainer/>
+      </div>
     </div>
   )
 }

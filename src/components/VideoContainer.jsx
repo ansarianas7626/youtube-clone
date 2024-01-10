@@ -16,7 +16,7 @@ const VideoContainer = () => {
   // console.log(videos);
 
   return (
-    <div className={`h-[calc(100vh-56px)] w-full ${isMenuOpen? "md:w-[calc(100vw-80px)]" : "md:w-[calc(100vw-240px)]"} flex flex-col mt-14 md:mt-0`}>
+    <div className={`h-[calc(100vh-56px)] w-full ${isMenuOpen? "md:w-[calc(100vw-80px)]" : "md:w-[calc(100vw-240px)]"} flex flex-col`}>
         <CategoryList/>
 
         {videos !== null ? 
