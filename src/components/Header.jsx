@@ -65,10 +65,10 @@ const Header = () => {
 
   
   return (
-    <div className='w-full h-fit grid grid-cols-12 md:flex items-center justify-between px-2 pb-3 md:pb-0 gap-2 md:gap-0 md:pl-4 md:pr-6 sticky top-0 z-10 shadow-md'>
+    <div className='w-full h-fit grid grid-cols-12 md:flex items-center justify-between px-2 pb-3 md:pb-0 md:gap-0 md:pl-4 md:pr-6 sticky top-0 z-10 shadow-md'>
 
       {/* hamburger & logo */}
-      <div className='flex items-center space-x-1 col-span-10 order-1'>
+      <div className='flex items-center space-x-1 order-1 col-span-10'>
         <div onClick={handleToggle} className='hidden w-10 h-10 md:flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'>
           <LiaBarsSolid />
         </div>
