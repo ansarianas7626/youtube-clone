@@ -7,7 +7,7 @@ const VideoCard = ({ videoData }) => {
   const { isMenuOpen } = useSelector((state)=> state.app)
 
   const { snippet, statistics  } = videoData;
-  const { channelId, thumbnails, channelTitle, publishedAt } = snippet;
+  const { channelId, thumbnails, channelTitle, publishedAt, title } = snippet;
 
   const channelLogo = useChannelLogo(channelId);
 
@@ -23,7 +23,7 @@ const VideoCard = ({ videoData }) => {
         </div>
 
         <div className='w-fit h-fit flex flex-col'>
-            <p className='font-semibold'>{snippet?.title.slice(0,50)}...</p>
+            <p className='font-semibold'>{title.slice(0,50)}...</p>
             <span className=''>{channelTitle}</span>
             <span>{statistics?.viewCount} views 3 hours ago</span>
         </div>
