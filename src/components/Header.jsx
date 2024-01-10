@@ -65,11 +65,11 @@ const Header = () => {
 
   
   return (
-    <div className='w-full h-14 flex items-center justify-between pl-4 pr-6 sticky top-0 z-10'>
+    <div className='w-full h-14 grid grid-cols-12 md:flex items-center justify-between px-2 gap-2 md:gap-0 md:pl-4 md:pr-6 sticky top-0 z-10'>
 
       {/* hamburger & logo */}
-      <div className='flex items-center space-x-1'>
-        <div onClick={handleToggle} className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'>
+      <div className='flex items-center space-x-1 col-span-10 order-1'>
+        <div onClick={handleToggle} className='hidden w-10 h-10 md:flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'>
           <LiaBarsSolid />
         </div>
           <div className='flex items-center cursor-pointer'>
@@ -82,9 +82,10 @@ const Header = () => {
       </div>
 
       {/* Search Bar */}
-      <div className='flex items-center'>
-        <div className='flex items-center w-[650px] h-10'>
+      <div className='flex items-center order-3 md:order-2 col-span-12'>
 
+        {/* seach input and button */}
+        <div className='w-full md:w-[40vw] lg:w-[32vw] flex items-center h-10'>
           <div className='w-[90%] flex flex-col h-full relative'>
             <input 
             className='h-full w-full outline-none  px-3 placeholder:font-semibold rounded-l-full border-[1px] border-stone-300 focus:border-blue-800' type="text" placeholder='Search'
@@ -102,14 +103,14 @@ const Header = () => {
           <button className='text-2xl bg-gray-100 hover:bg-gray-200 h-full px-5 flex justify-center items-center border-[1px] border-stone-300 transition-all rounded-r-full border-l-0'>
             <IoIosSearch />
           </button>
-
         </div>
 
+        {/* Microphone */}
         <span className='w-10 h-10 flex justify-center items-center rounded-full text-lg cursor-pointer bg-gray-100 hover:bg-gray-200 transition-all ml-5'><FaMicrophone /></span>
       </div>
 
       {/* Right icons */}
-      <div className='flex items-center gap-2 pr-5'>
+      <div className='flex items-center gap-2 pr-5 order-2 col-span-2'>
         <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'><RiLiveLine /></div>
         <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'><CiBellOn /></div>
         <div className='w-8 h-8 flex justify-center items-center cursor-pointer rounded-full text-2xl bg-gray-600 transition-all'></div>

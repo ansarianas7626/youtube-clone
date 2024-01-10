@@ -10,7 +10,9 @@ const Body = () => {
 
   return (
     <div className='flex'>
-      {isMenuOpen ? <ShortSideBar/> : <SideBar/>}
+      <div className='hidden md:block'>
+        {isMenuOpen ? <ShortSideBar/> : <SideBar/>}
+      </div>
       <Outlet/>
     </div>
   )

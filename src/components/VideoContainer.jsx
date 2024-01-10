@@ -16,11 +16,11 @@ const VideoContainer = () => {
   // console.log(videos);
 
   return (
-    <div className={`h-[calc(100vh-56px)] ${isMenuOpen? "w-[calc(100vw-80px)]" : "w-[calc(100vw-240px)]"} flex flex-col`}>
+    <div className={`h-[calc(100vh-56px)] w-full ${isMenuOpen? "md:w-[calc(100vw-80px)]" : "md:w-[calc(100vw-240px)]"} flex flex-col mt-14 md:mt-0`}>
         <CategoryList/>
 
         {videos !== null ? 
-        <div className='h-fit w-full flex flex-wrap gap-4 overflow-scroll overflow-x-hidden px-5 py-2'>
+        <div className='h-fit w-full flex justify-center md:justify-start flex-wrap gap-4 overflow-scroll overflow-x-hidden px-5 py-2'>
           {videos?.map((video)=>(
             <Link to={"/watch?v="+video.id} key={video?.id}>
               <VideoCard
