@@ -36,11 +36,11 @@ const WatchPage = () => {
 
 
   return (
-    <div className='lg:w-[calc(100vw-80px)] flex justify-between px-5 lg:pl-5 pt-5 lg:pt-7 h-screen overflow-y-scroll'>
+    <div className='lg:w-[calc(100vw-80px)] flex justify-between px-2 lg:pl-5 pt-5 lg:pt-7 h-screen overflow-y-scroll'>
       {/* Left container */}
       <div className='w-full lg:w-[75%] h-auto'>
         {/* Video */}
-        <div className='bg-white w-full h-[450px] lg:h-[650px] rounded-lg overflow-hidden'>
+        <div className='bg-white w-full h-[300px] sm:h-[450px] lg:h-[650px] rounded-lg overflow-hidden'>
           <iframe 
           className='w-full h-full'
           // width="560" 
@@ -53,24 +53,26 @@ const WatchPage = () => {
         </div>
         
         {/* info container */}
-        <div className='flex flex-col space-y-4 pt-3'>
+        <div className='flex flex-col space-y-4 pt-3 '>
           {/* Video title */}
           <h3 className='font-semibold text-xl'>{title}</h3>
           
           {/* channel detail and button container */}
-          <div className='flex justify-between'>
+          <div className='flex flex-col lg:flex-row space-y-5 lg:space-y-0 justify-between'>
             {/* left */}
-            <div className='flex items-start'>
+            <div className='flex justify-between lg:justify-normal'>
               {/* channel logo */}
-              <div className='rounded-full h-10 w-10 overflow-hidden bg-gray-300 mr-3'>
-                <img src={channelLogo} alt="channel-logo" />
+              <div className='flex'>
+                <div className='rounded-full h-10 w-10 overflow-hidden bg-gray-300 mr-3'>
+                  <img src={channelLogo} alt="channel-logo" />
+                </div>
+                {/* channel name */}
+                <div className='flex flex-col lg:mr-6'>
+                  <span className='font-semibold line-clamp-1 md:line-clamp-none'>{channelTitle}</span>
+                  <span className='text-xs'>41.1 M Subscribers</span>
+                </div>
               </div>
-              {/* channel name */}
-              <div className='flex flex-col lg:mr-6'>
-                <span className='font-semibold line-clamp-1 md:line-clamp-none'>{channelTitle}</span>
-                <span className='text-xs'>41.1 M Subscribers</span>
-              </div>
-              <button className='bg-black hover:bg-stone-900 text-white rounded-3xl px-4 py-2 h-fit font-semibold mx-3'>subscribe</button>
+              <button className='bg-black hover:bg-stone-900 text-white rounded-3xl px-4 py-2 h-fit font-semibold lg:mx-3'>subscribe</button>
             </div>
 
             {/* right */}
