@@ -20,7 +20,7 @@ const CategoryList = () => {
   }
 
   return (
-    <div className='w-full flex space-x-3 scrollbar-hide overflow-y-hidden overflow-x-scroll pt-3 pb-9 sticky top-0 px-5 whitespace-nowrap'>
+    <div className='w-full flex space-x-3 scrollbar-hide overflow-y-hidden overflow-x-scroll pt-3 pb-9 sticky top-0 px-3 md:px-5 whitespace-nowrap'>
       {category?.map((category,index)=><CategoryButton 
       key={index+Math.random()*10}
       categoryData={category} 

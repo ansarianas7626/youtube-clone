@@ -20,7 +20,7 @@ const VideoContainer = () => {
         <CategoryList/>
 
         {videos !== null ? 
-        <div className='h-fit w-full flex justify-center md:justify-start flex-wrap gap-4 overflow-scroll overflow-x-hidden px-5 py-2'>
+        <div className='h-fit w-full flex justify-center md:justify-start flex-wrap gap-4 overflow-scroll overflow-x-hidden pl-3 lg:pl-5 pr-2 py-2'>
           {videos?.map((video)=>(
             <Link to={"/watch?v="+video.id} key={video?.id}>
               <VideoCard

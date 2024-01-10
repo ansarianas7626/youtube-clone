@@ -12,7 +12,7 @@ const VideoCard = ({ videoData }) => {
   const channelLogo = useChannelLogo(channelId);
 
   return (
-    <div className={`flex flex-col space-y-3 w-[300px] ${isMenuOpen? "lg:w-[340px]" : "md:w-[310px]"} h-fit transition-all cursor-pointer`}>
+    <div className={`flex flex-col space-y-3 max-w-full sm:w-[300px] ${isMenuOpen? "lg:max-w-[340px]" : "md:max-w-[310px]"} h-fit transition-all cursor-pointer`}>
         <div className='w-[full] h-48 rounded-xl overflow-hidden bg-gray-300'>
           <img className='w-full h-full' src={thumbnails?.medium?.url} alt="video-thumbnail" />
         </div>
