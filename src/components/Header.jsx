@@ -4,11 +4,12 @@ import { FaMicrophone } from "react-icons/fa6";
 import { RiLiveLine } from "react-icons/ri";
 import { CiBellOn } from "react-icons/ci";
 import { LiaBarsSolid } from "react-icons/lia";
-import { YOUTUBE_LOGO, YOUTUBE_SEARCH_SUGGESTION_API } from '../utils/constants';
+import { YOUTUBE_API_KEY, YOUTUBE_LOGO, YOUTUBE_SEARCH_SUGGESTION_API } from '../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../redux/appSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import { cacheResults } from '../redux/searchSlice';
+import { addVideos } from '../redux/videosSlice';
 
 
 
@@ -16,6 +17,7 @@ const Header = () => {
 
   const [searchQuery, setSearchQuery] = useState("")
   const [suggestions, setSuggestions] = useState([]);
+  const [showSearchResults, setshowSearchResults] = useState(false);
   const dispatch = useDispatch();
 
   const searchCache = useSelector((store)=> store.search)
@@ -63,6 +65,14 @@ const Header = () => {
     }));
   }
 
+  const fetchVideoBySeahcKeyword = async()=>{
+    setshowSearchResults(false);
+    const data = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&eventType=none&maxResults=50&order=relevance&q=${searchQuery}&regionCode=IN&safeSearch=none&key=${YOUTUBE_API_KEY}`);
+    const json = await data.json();
+    // console.log(json);
+    dispatch(addVideos(json.items));
+  }
+
   
   return (
     <div className='w-full h-fit grid grid-cols-12 md:flex items-center justify-between px-2 pb-3 md:pb-0 md:gap-0 md:pl-4 md:pr-6 sticky top-0 z-10 shadow-md'>
@@ -90,17 +100,19 @@ const Header = () => {
             <input 
             className='h-full w-full outline-none  px-3 placeholder:font-semibold rounded-l-full border-[1px] border-stone-300 focus:border-blue-800' type="text" placeholder='Search'
             value={searchQuery}
-            onChange={(e)=>{setSearchQuery(e.target.value)}}/>
+            onChange={(e)=>{setSearchQuery(e.target.value)}}
+            onFocus={()=>setshowSearchResults(true)}
+            />
 
             {/* Search Suggestion list */}
-            {suggestions?.length>0 && <div className='w-full h-fit bg-white absolute top-10 rounded-lg py-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)]'>
+            {(showSearchResults && suggestions.length >=1) && <div className='w-full h-fit bg-white absolute top-10 rounded-lg py-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)]'>
               <ul>
-                {suggestions?.map((s) => <li key={s} className='flex items-center hover:bg-stone-200 px-3 py-1 cursor-default'><IoIosSearch className='mr-3'/>{s}</li>)}
+                {suggestions?.map((s) => <li onClick={()=>setSearchQuery(s)} key={s} className='flex items-center hover:bg-stone-200 px-3 py-1 cursor-default'><IoIosSearch className='mr-3'/>{s}</li>)}
               </ul>
             </div>}
           </div>
 
-          <button className='text-2xl bg-gray-100 hover:bg-gray-200 h-full px-5 flex justify-center items-center border-[1px] border-stone-300 transition-all rounded-r-full border-l-0'>
+          <button onClick={fetchVideoBySeahcKeyword} className='text-2xl bg-gray-100 hover:bg-gray-200 h-full px-5 flex justify-center items-center border-[1px] border-stone-300 transition-all rounded-r-full border-l-0'>
             <IoIosSearch />
           </button>
         </div>
