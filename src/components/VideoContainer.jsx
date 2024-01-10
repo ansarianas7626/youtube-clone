@@ -29,7 +29,7 @@ const VideoContainer = () => {
           ))}
         </div>
         :
-        <div className='h-fit w-full flex flex-wrap gap-4 overflow-scroll overflow-x-hidden px-5 py-2'>
+        <div className='h-fit w-full flex justify-center md:justify-start flex-wrap gap-4 overflow-scroll overflow-x-hidden px-5 py-2'>
           {
             Array(15).fill().map((shimmerCard, idx)=>{
               return <VideoCardShimmer key={idx}/>
