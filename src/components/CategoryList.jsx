@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import CategoryButton from './CategoryButton'
-import { YOUTUBE_API_KEY, YOUTUBE_CATEGORY_LIST_API, buttonLists } from '../utils/constants'
+import { YOUTUBE_API_KEY, YOUTUBE_CATEGORY_LIST_API } from '../utils/constants'
 import { useEffect } from 'react';
 
 const CategoryList = () => {
@@ -16,7 +16,7 @@ const CategoryList = () => {
     const data = await fetch(YOUTUBE_CATEGORY_LIST_API+YOUTUBE_API_KEY);
     const json = await data.json();
     setCategory(json.items);
-    console.log("category is", category);
+    // console.log("category is", category);
   }
 
   return (
