@@ -1,35 +1,24 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import Body from "./components/Body"
-import Header from "./components/Header"
-import VideoContainer from "./components/VideoContainer"
-import WatchPage from "./components/WatchPage"
-import ShortsPage from "./components/ShortsPage"
+import React from 'react'
+import SideBar from './components/SideBar'
+import ShortSideBar from './components/ShortSideBar'
+import { useSelector } from 'react-redux'
+import { Outlet } from 'react-router-dom'
+import Header from './components/Header'
 
-function App() {
-  
-  const appRouter = createBrowserRouter([{
-    path : "/",
-    element: <Body/>,
-    children: [
-      {
-        path: "/",
-        element: <VideoContainer/>
-      },
-      {
-        path: "/watch",
-        element: <WatchPage/>
-      },
-      {
-        path: "/shorts",
-        element: <ShortsPage/>
-      },
-    ]
-  }])
+const App = () => {
+
+  const { isMenuOpen } = useSelector((state)=> state.app)
 
   return (
-    <div className="max-h-screen overflow-hidden">
-      <Header />
-      <RouterProvider router={appRouter}/>
+    <div>
+      <Header/>
+
+      <div className='flex'>
+        <div className='hidden md:block'>
+          {isMenuOpen ? <ShortSideBar/> : <SideBar/>}
+        </div>
+        <Outlet/>
+      </div>
     </div>
   )
 }

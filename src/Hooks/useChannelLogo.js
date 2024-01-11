@@ -9,7 +9,7 @@ const useChannelLogo = (channelId) =>{
     const fetchProfileImage = async() =>{
         const data = await fetch("https://www.googleapis.com/youtube/v3/channels?part=snippet&fields=items%2Fsnippet%2Fthumbnails%2Fdefault&id="+channelId+"&key="+YOUTUBE_API_KEY);
         const json = await data.json();
-        setChannelProfilePic(json.items[0]?.snippet?.thumbnails?.default?.url)
+        setChannelProfilePic(json?.items[0]?.snippet?.thumbnails?.default?.url)
     }
     
       useEffect(()=>{

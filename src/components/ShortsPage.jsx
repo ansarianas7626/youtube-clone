@@ -1,6 +1,31 @@
 import React from 'react'
 
 const ShortsPage = () => {
+
+  // export const getShortVideos = async channelId => {
+  //   try {
+  //     const response = await axios.get(`${BASE_URL}/search`, {
+  //       params: {
+  //         part: 'id',
+  //         channelId: channelId,
+  //         maxResults: 50, // You can adjust this number as needed
+  //         type: 'short',
+  //         key: YOUTUBE_API_KEY,
+  //         order: 'date',
+  //       },
+  //     });
+  
+  //     const videos = response.data.items.map(item => {
+  //       return item.id.videoId;
+  //     });
+  
+  //     return videos;
+  //   } catch (error) {
+  //     console.error('Error fetching data:', JSON.stringify(error, null, 2));
+  //     return [];
+  //   }
+  // };
+
   return (
     <div className=' w-full h-screen bg-green-400 overflow-scroll'>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi reiciendis blanditiis exercitationem distinctio odit, velit at placeat corporis non dicta modi dolore. Nemo ipsam repellendus dignissimos magnam laudantium corporis eum sit voluptatibus, omnis adipisci, error laboriosam, porro minus modi odit sed eius. Iure voluptatibus dolore, recusandae hic laborum maxime qui amet omnis soluta necessitatibus porro, at aliquam quaerat mollitia earum corporis tempore laboriosam quisquam officia quam autem voluptas dolorem? Ipsum ad, repudiandae velit excepturi optio aperiam reprehenderit nisi tenetur ducimus alias. Ullam voluptas quas porro adipisci placeat vel! Suscipit, aperiam quaerat esse nulla vitae libero incidunt iste inventore rerum ab optio, voluptate similique voluptas ad voluptates id reprehenderit exercitationem illo tempore eius ducimus! Ad exercitationem dicta magni quasi voluptatum repudiandae. Veniam, inventore! Voluptas consequatur voluptatibus odit incidunt modi, cupiditate quam blanditiis, veniam reprehenderit dolor perspiciatis voluptatum commodi architecto ad. Enim voluptates dolorum voluptatum? Optio velit mollitia possimus quia neque commodi non distinctio iste architecto delectus placeat adipisci vitae aspernatur necessitatibus incidunt, dolorem nostrum illo eligendi deserunt? Porro quidem inventore accusantium ducimus, accusamus debitis quo vitae quibusdam laboriosam molestiae voluptas repellendus vel dolorum aliquid voluptatibus magni nulla quaerat. Ab beatae minus quod suscipit aliquam pariatur a deserunt assumenda! Nostrum, quo delectus.</p>

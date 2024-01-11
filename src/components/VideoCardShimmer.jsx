@@ -7,8 +7,8 @@ const VideoCardShimmer = () => {
 
 
   return (
-    <div className={`flex flex-col space-y-3 w-[300px] ${isMenuOpen? "w-[340px]" : "w-[310px]"} h-fit transition-all`}>
-        <div className='w-full h-56 sm:h-48 rounded-xl overflow-hidden bg-gray-200'>
+    <div className={`flex flex-col space-y-3 w-full sm:w-[300px] ${isMenuOpen? "w-[340px]" : "w-[310px]"} h-fit transition-all`}>
+        <div className='w-full h-56 sm:h-44 rounded-xl overflow-hidden bg-gray-200'>
         </div>
 
       <div className='flex'>

@@ -19,8 +19,10 @@ const Header = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSearchResults, setshowSearchResults] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const searchCache = useSelector((store)=> store.search)
+
 
   const handleToggle = ()=>{
     dispatch(toggleMenu())
@@ -65,12 +67,14 @@ const Header = () => {
     }));
   }
 
-  const fetchVideoBySeahcKeyword = async()=>{
+  const fetchVideoBySearchhcKeyword = async(s)=>{
+    setSearchQuery(s);
     setshowSearchResults(false);
     const data = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&eventType=none&maxResults=50&order=relevance&q=${searchQuery}&regionCode=IN&safeSearch=none&key=${YOUTUBE_API_KEY}`);
     const json = await data.json();
-    // console.log(json);
+    // console.log("searched videos",json.items);
     dispatch(addVideos(json.items));
+    navigate("/")
   }
 
   
@@ -83,11 +87,9 @@ const Header = () => {
           <LiaBarsSolid />
         </div>
           <div className='flex items-center cursor-pointer'>
-              {/* <Link to="/"> */}
-              <a href="/">
+              <Link to="/">
                 <img className='h-14' src={YOUTUBE_LOGO} alt="YouTube-Logo" />
-              </a>
-              {/* </Link> */}
+              </Link>
           </div>
       </div>
 
@@ -107,12 +109,12 @@ const Header = () => {
             {/* Search Suggestion list */}
             {(showSearchResults && suggestions.length >=1) && <div className='w-full h-fit bg-white absolute top-10 rounded-lg py-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)]'>
               <ul>
-                {suggestions?.map((s) => <li onClick={()=>setSearchQuery(s)} key={s} className='flex items-center hover:bg-stone-200 px-3 py-1 cursor-default'><IoIosSearch className='mr-3'/>{s}</li>)}
+                {suggestions?.map((s) => <li onClick={()=>fetchVideoBySearchhcKeyword(s)} key={s} className='flex items-center hover:bg-stone-200 px-3 py-1 cursor-default'><IoIosSearch className='mr-3'/>{s}</li>)}
               </ul>
             </div>}
           </div>
 
-          <button onClick={fetchVideoBySeahcKeyword} className='text-2xl bg-gray-100 hover:bg-gray-200 h-full px-5 flex justify-center items-center border-[1px] border-stone-300 transition-all rounded-r-full border-l-0'>
+          <button onClick={fetchVideoBySearchhcKeyword} className='text-2xl bg-gray-100 hover:bg-gray-200 h-full px-5 flex justify-center items-center border-[1px] border-stone-300 transition-all rounded-r-full border-l-0'>
             <IoIosSearch />
           </button>
         </div>

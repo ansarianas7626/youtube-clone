@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeMenu } from '../redux/appSlice'
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { AiOutlineLike } from "react-icons/ai";
 import { PiShareFatLight } from "react-icons/pi";
 import { TfiDownload } from "react-icons/tfi";
@@ -13,26 +13,28 @@ import useChannelLogo from '../Hooks/useChannelLogo';
 import RecommentVideosContainer from './RecommentVideosContainer';
 import LiveChatContainer from './LiveChatContainer';
 import useVideos from '../Hooks/useVideos';
+import { YOUTUBE_API_KEY } from '../utils/constants';
+import { addWatchpageVideo } from '../redux/videosSlice';
 
 const WatchPage = () => {
 
   const dispatch = useDispatch()
-
   const [searchParams] = useSearchParams()
-
-  const videos = useSelector((state)=>state.videos?.videosData)
   
-  const matchedVideo = videos?.filter((video)=>video.id === searchParams.get("v"));
-  // console.log(matchedVideo);
-
-  const { channelId, title, channelTitle } = matchedVideo[0]?.snippet;
-
-
-  const channelLogo = useChannelLogo(channelId);
-
+  const currentVideo = useSelector((state)=>state.videos.watchPageVideo);
+  
+  const fetchCurrentVideo = async()=>{
+    const data = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&hl=en&id=${searchParams.get("v")}&regionCode=IN&key=${YOUTUBE_API_KEY}`)
+    const json = await data.json();
+    dispatch(addWatchpageVideo(json.items))
+  }
+  
+  // const channelLogo = useChannelLogo(currentVideo?.[0]?.snippet?.channelId);
+  
   useEffect(()=>{
-    dispatch(closeMenu())
-  },[])
+    dispatch(closeMenu());
+    fetchCurrentVideo();
+  },[]);
 
 
   return (
@@ -55,7 +57,7 @@ const WatchPage = () => {
         {/* info container */}
         <div className='flex flex-col space-y-4 pt-3 '>
           {/* Video title */}
-          <h3 className='font-semibold text-xl'>{title}</h3>
+          <h3 className='font-semibold text-xl'>{currentVideo?.[0]?.snippet?.title}</h3>
           
           {/* channel detail and button container */}
           <div className='flex flex-col lg:flex-row space-y-5 lg:space-y-0 justify-between'>
@@ -64,11 +66,11 @@ const WatchPage = () => {
               {/* channel logo */}
               <div className='flex'>
                 <div className='rounded-full h-10 w-10 overflow-hidden bg-gray-300 mr-3'>
-                  <img src={channelLogo} alt="channel-logo" />
+                  {/* <img src={channelLogo} alt="channel-logo" /> */}
                 </div>
                 {/* channel name */}
                 <div className='flex flex-col lg:mr-6'>
-                  <span className='font-semibold line-clamp-1 md:line-clamp-none'>{channelTitle}</span>
+                  <span className='font-semibold line-clamp-1 md:line-clamp-none'>{currentVideo?.[0]?.snippet?.channelTitle}</span>
                   <span className='text-xs'>41.1 M Subscribers</span>
                 </div>
               </div>
@@ -88,8 +90,8 @@ const WatchPage = () => {
 
           {/* description box container */}
           <div className='flex flex-col p-2 space-y-2 w-full min-h-28 overflow-hidden bg-gray-100 rounded-lg'>
-            <span>{matchedVideo[0]?.statistics?.viewCount} Views</span>
-            <span className='text-sm'>{matchedVideo[0]?.snippet?.description}</span>
+            <span>{currentVideo?.[0]?.statistics?.viewCount} Views</span>
+            <span className='text-sm'>{currentVideo?.[0]?.snippet?.description}</span>
             <span className='text-sm cursor-pointer'>more...</span>
           </div>
         </div>

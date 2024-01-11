@@ -22,7 +22,7 @@ const VideoContainer = () => {
         {videos !== null ? 
         <div className='h-fit w-full flex justify-center md:justify-start flex-wrap gap-4 overflow-scroll overflow-x-hidden pl-3 lg:pl-5 pr-2 py-2'>
           {videos?.map((video,idx)=>(
-            <Link to={"/watch?v="+video.id} key={video?.id+idx}>
+            <Link to={"/watch?v="+(video?.kind == "youtube#video"?  video?.id : video.id.videoId)} key={video?.id+idx}>
               <VideoCard
               videoData = {video}/>
             </Link>
@@ -31,9 +31,7 @@ const VideoContainer = () => {
         :
         <div className='h-fit w-full flex justify-center md:justify-start flex-wrap gap-4 overflow-scroll overflow-x-hidden pl-3 lg:pl-5 pr-2 py-2'>
           {
-            Array(15).fill().map((shimmerCard, idx)=>{
-              return <VideoCardShimmer key={idx}/>
-            })
+            Array(15).fill().map((shimmerCard, idx)=> <VideoCardShimmer key={idx}/>)
           }
         </div>}
 
