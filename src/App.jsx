@@ -10,7 +10,7 @@ const App = () => {
   const { isMenuOpen } = useSelector((state)=> state.app)
 
   return (
-    <div>
+    <div className='w-full h-screen overflow-hidden'>
       <Header/>
 
       <div className='flex'>

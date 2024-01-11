@@ -4,20 +4,30 @@ import {  } from "react-icons/ai";
 
 
 
-const Comment = () => {
+const Comment = ({ commentData }) => {
+
+  console.log("commentData", commentData.snippet.topLevelComment.snippet);
+
+  const { authorDisplayName, authorProfileImageUrl, likeCount, textDisplay, textOriginal} = commentData?.snippet?.topLevelComment?.snippet;
+
   return (
     <div className='flex'>
-      <div className='h-10 w-10 bg-gray-200 rounded-full mr-3'>
-
+      <div className='h-10 w-10 bg-gray-200 rounded-full overflow-hidden mr-3'>
+        <img className='w-full h-full bg-contain bg-center' src={authorProfileImageUrl} alt="" />
       </div>
 
       <div className='flex flex-col gap-2'>
-        <span className='font-semibold'>@username</span>
-        <span className='text-sm'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum accusamus, vel quam exercitationem natus assumenda doloribus fugit corporis! Obcaecati dicta placeat culpa eum provident odio illo et nesciunt hic repellat.</span>
+        <div className='flex flex-col'>
+          <span className='font-bold text-sm'>{authorDisplayName}</span>
+          <span className='text-sm'>{textDisplay || textOriginal}</span>
+        </div>
         <div className='flex'>
-            <span className='hover:bg-stone-200 text-xl cursor-pointer rounded-full p-2'><AiOutlineLike /></span>
-            <span className='hover:bg-stone-200 text-xl cursor-pointer rounded-full p-2'><AiOutlineDislike /></span>
-            <span className='text-xs font-semibold hover:bg-stone-200 cursor-pointer rounded-2xl p-2'>Reply</span>
+            <div className='hover:bg-stone-200 text-xl cursor-pointer rounded-full p-2 flex items-center space-x-1'>
+              <AiOutlineLike />
+              <span className='text-sm'>{likeCount}</span>
+              </div>
+            <div className='hover:bg-stone-200 text-xl cursor-pointer rounded-full p-2'><AiOutlineDislike /></div>
+            <div className='text-xs font-semibold hover:bg-stone-200 cursor-pointer rounded-2xl p-2'>Reply</div>
         </div>
       </div>
     </div>
