@@ -79,7 +79,7 @@ const Header = () => {
 
   
   return (
-    <div className='w-full h-fit grid grid-cols-12 md:flex items-center justify-between px-2 pb-3 md:pb-0 md:gap-0 md:pl-4 md:pr-6 sticky top-0 z-10 shadow-md'>
+    <div className='w-full h-14 grid grid-cols-12 md:flex items-center justify-between px-2 pb-3 md:pb-0 md:gap-0 md:pl-4 md:pr-6 sticky top-0 z-10 shadow-md'>
 
       {/* hamburger & logo */}
       <div className='flex items-center space-x-1 order-1 col-span-10'>
@@ -127,7 +127,7 @@ const Header = () => {
       <div className='flex items-center gap-2 pr-5 order-2 col-span-2'>
         <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'><RiLiveLine /></div>
         <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'><CiBellOn /></div>
-        <div className='w-8 h-8 flex justify-center items-center cursor-pointer rounded-full text-2xl bg-gray-600 transition-all'></div>
+        <div className='w-8 h-8 flex justify-center items-center cursor-pointer rounded-full text-2xl bg-stone-400 transition-all'></div>
       </div>
 
     </div>
