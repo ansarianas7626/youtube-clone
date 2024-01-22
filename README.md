@@ -21,13 +21,19 @@ Tech Used
 
 ScreenShots
 1. Main Home Page
-![main page](https://github.com/ansarianas23/youtube-clone/assets/111463267/49c1dcf9-c6a5-4d99-9d7f-453cf4c0905c)
 
-2. Watch Page
-![watch page](https://github.com/ansarianas23/youtube-clone/assets/111463267/74f2f72d-a0ac-4380-bc5e-e592581b6e09)
+![main page](https://github.com/ansarianas23/youtube-clone/assets/111463267/9757b891-f084-44b6-9d21-16d514a6fdaa)
 
-3. Short Video Page
-![shorts page](https://github.com/ansarianas23/youtube-clone/assets/111463267/73caf840-3121-474a-a734-b281e481fb4b)
+
+3. Watch Page
+
+![watch page](https://github.com/ansarianas23/youtube-clone/assets/111463267/08b193d8-58d1-4aa0-8ca1-e7d9c9d835c4)
+
+
+5. Short Video Page
+
+![shorts page](https://github.com/ansarianas23/youtube-clone/assets/111463267/5353187d-44b9-42a3-8fba-5b2ed8dbd2d8)
+
 
 
 
