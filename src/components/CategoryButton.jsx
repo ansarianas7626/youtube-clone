@@ -21,7 +21,7 @@ const CategoryButton = ({ active, index, setActive, categoryData }) => {
 
     const json = await data.json();
     dispatch(addVideos(json.items))
-    console.log(json.items);
+    // console.log(json.items);
   }
 
   // console.log("from btn", categoryData)

@@ -38,7 +38,7 @@ const LiveChatContainer = () => {
         </div>
 
         {/* chat container */}
-        <div className='w-full h-full flex flex-col-reverse py-1 overflow-y-scroll'>
+        <div className='w-full h-full flex flex-col-reverse py-1 overflow-y-scroll overscroll-y-none'>
             {messages?.map((msg, idx)=><LiveChatMessage key={idx} chatData={msg}/>)}
         </div>
 

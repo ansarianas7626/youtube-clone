@@ -6,7 +6,7 @@ import {  } from "react-icons/ai";
 
 const Comment = ({ commentData }) => {
 
-  console.log("commentData", commentData.snippet.topLevelComment.snippet);
+  // console.log("commentData", commentData.snippet.topLevelComment.snippet);
 
   const { authorDisplayName, authorProfileImageUrl, likeCount, textDisplay, textOriginal} = commentData?.snippet?.topLevelComment?.snippet;
 

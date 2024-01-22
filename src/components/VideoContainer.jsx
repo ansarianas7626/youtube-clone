@@ -5,6 +5,7 @@ import VideoCard from "../components/VideoCard"
 import { Link } from 'react-router-dom'
 import VideoCardShimmer from './VideoCardShimmer'
 import useVideos from '../Hooks/useVideos'
+import { YOUTUBE_API_KEY } from '../utils/constants'
 
 const VideoContainer = () => {
 
@@ -12,8 +13,7 @@ const VideoContainer = () => {
   
 
   useVideos();
-  const videos = useSelector((state)=>state.videos?.videosData)
-  // console.log(videos);
+  const videos = useSelector((state)=>state.videos?.videosData);
 
   return (
     <div className={`h-[calc(100vh-56px)] w-full ${isMenuOpen? "md:w-[calc(100vw-80px)]" : "md:w-[calc(100vw-240px)]"} flex flex-col`}>

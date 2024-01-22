@@ -50,3 +50,19 @@
 ::-webkit-scrollbar-thumb:vertical {
     height: 5px;
 }
+
+
+
+@keyframes progressAnimation {
+    0%{
+        width: 1%;
+    }
+
+    25%{
+        width: 25%;
+    }
+
+    to {
+        width: 100%;
+    }
+}

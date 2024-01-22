@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { closeMenu } from '../redux/appSlice'
+import { closeMenu, toggleMenu } from '../redux/appSlice'
 import { json, useNavigate, useSearchParams } from 'react-router-dom'
 import { AiOutlineLike } from "react-icons/ai";
 import { PiShareFatLight } from "react-icons/pi";
@@ -34,6 +34,11 @@ const WatchPage = () => {
   useEffect(()=>{
     dispatch(closeMenu());
     fetchCurrentVideo();
+
+    return()=>{
+      dispatch(toggleMenu());
+    }
+
   },[]);
 
 

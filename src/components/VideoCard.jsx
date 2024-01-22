@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import useChannelLogo from '../Hooks/useChannelLogo';
+import { YOUTUBE_API_KEY } from '../utils/constants';
+import stringTruncate from '../utils/stringTruncate';
+import formatViewCount from '../utils/formatViewCount';
 
 const VideoCard = ({ videoData }) => {
 
@@ -10,11 +13,38 @@ const VideoCard = ({ videoData }) => {
   const { channelId, thumbnails, channelTitle, publishedAt, title } = snippet;
 
   const channelLogo = useChannelLogo(channelId);
+  
+  const [videostatistics, setVideostatistics] = useState(null)
+  const [vId, setVid] = useState();
 
-  // This function is to reduce the description length
-  const truncate = (string, n)=>{
-    return string?.length > n ? string.substr(0, n-1) + "..." : string;
-  }
+  // if(videoData.kind == "youtube#searchResult"){
+  //   setVid(videoData?.id?.videoId);
+  // }
+
+  // const [kind, setKind] = useState(null);
+
+  // const fetchVideoStatistics = async ()=>{
+  //   const data = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoData?.id || videoData?.id?.videoId}&key=${YOUTUBE_API_KEY}`);
+  //   const json = await data.json();
+  //   setVideostatistics(json);
+  //   console.log("searched result statistics" ,videostatistics);
+  // }
+
+  useEffect(()=>{
+    // if(videoData?.kind == "youtube#video"){
+    //   setKind("youtube#video");
+    // }else if(videoData?.kind == "youtube#searchResult"){
+    //   setKind("youtube#searchResult");
+    //   setVid(videoData?.id?.videoId);
+    //   fetchVideoStatistics();
+    // }
+
+    // kind=="youtube#searchResult" && 
+  },[])
+  
+  
+  // console.log("kind is", kind)
+  
 
   return (
     <div className={`flex flex-col space-y-3 max-w-full sm:w-[300px] ${isMenuOpen? "lg:max-w-[340px]" : "md:max-w-[310px]"} h-fit transition-all cursor-pointer`}>
@@ -28,9 +58,9 @@ const VideoCard = ({ videoData }) => {
         </div>
 
         <div className='w-fit h-fit flex flex-col'>
-            <p className='font-semibold'>{truncate(title, 50)}</p>
+            <p className='font-semibold'>{stringTruncate(title, 50)}</p>
             <span className=''>{channelTitle}</span>
-            <span>{statistics?.viewCount} views 3 hours ago</span>
+            <span className='text-sm font-semibold'>{formatViewCount(statistics?.viewCount)} views 3 hours ago</span>
         </div>
       </div>
 
