@@ -25,12 +25,12 @@ ScreenShots
 ![main page](https://github.com/ansarianas23/youtube-clone/assets/111463267/9757b891-f084-44b6-9d21-16d514a6fdaa)
 
 
-3. Watch Page
+2. Watch Page
 
 ![watch page](https://github.com/ansarianas23/youtube-clone/assets/111463267/08b193d8-58d1-4aa0-8ca1-e7d9c9d835c4)
 
 
-5. Short Video Page
+3. Short Video Page
 
 ![shorts page](https://github.com/ansarianas23/youtube-clone/assets/111463267/5353187d-44b9-42a3-8fba-5b2ed8dbd2d8)
 
