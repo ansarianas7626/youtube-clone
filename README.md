@@ -22,10 +22,10 @@ Tech Used
 ScreenShots
 1. Main Home Page
 
-![main page](https://github.com/ansarianas23/youtube-clone/assets/111463267/9757b891-f084-44b6-9d21-16d514a6fdaa)
+![main page](https://github.com/ansarianas23/youtube-clone/assets/111463267/3d812699-fdb2-4d85-ae2e-5e0268736048)
 
 
-2. Watch Page
+3. Watch Page
 
 ![watch page](https://github.com/ansarianas23/youtube-clone/assets/111463267/08b193d8-58d1-4aa0-8ca1-e7d9c9d835c4)
 
