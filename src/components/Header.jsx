@@ -138,11 +138,11 @@ const Header = () => {
             />
 
             {/* Search Suggestion list */}
-            {(showSearchResults && suggestions.length >=1) && <div className={`w-full h-fit bg-white absolute top-10 rounded-lg py-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)]`}>
+            {(showSearchResults && suggestions.length >=1) && <div className={`${mode===true ? "bg-stone-800 text-white" : "bg-white text-black"} w-full h-fit absolute top-10 rounded-lg py-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)]`}>
               <ul>
                 {suggestions?.map((suggsn, idx) => <li onClick={()=>fetchVideoBySearchhcKeyword(suggsn)} 
                 key={suggsn} 
-                className={`flex items-center hover:bg-stone-200 px-3 py-1 cursor-default ${idx===activeSuggestion? "bg-stone-200" : ""}`}>
+                className={`flex items-center hover:bg-stone-200 hover:text-black px-3 py-1 cursor-default ${idx===activeSuggestion? "bg-stone-200 text-black" : ""}`}>
                   <IoIosSearch className='mr-3'/>
                   {suggsn}
                 </li>)}
