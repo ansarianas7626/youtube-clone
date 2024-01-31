@@ -16,6 +16,7 @@ const ShortsPage = () => {
   // Log the scroll position to the console
   const handleScroll = () =>{
     console.log("Current scroll position: " + scrollPosition);
+
   }
 
   // export const getShortVideos = async channelId => {
@@ -42,8 +43,11 @@ const ShortsPage = () => {
   //   }
   // };
 
+  // Theme Mode
+  const mode = useSelector((store)=> store.app.toggleTheme);
+
   return (
-    <div onScroll={handleScroll} className={`flex flex-col items-center max-h-[calc(100vh-56px)] ${isMenuOpen? "md:w-[calc(100vw-80px)]" : "md:w-[calc(100vw-240px)]"} overflow-y-scroll overflow-x-hidden pt-7`}>
+    <div onScroll={handleScroll} className={`${mode===true?"bg-youTube-dark": "bg-white"} flex flex-col items-center max-h-[calc(100vh-56px)] ${isMenuOpen? "md:w-[calc(100vw-80px)]" : "md:w-[calc(100vw-240px)]"} overflow-y-scroll overflow-x-hidden pt-7`}>
       {dummyArray.map((video, idx)=> <ShortVideo key={idx}/>)}
     </div>
   )

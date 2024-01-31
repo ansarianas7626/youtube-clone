@@ -50,7 +50,7 @@ const WatchPage = () => {
       {/* Left container */}
       <div className='w-full lg:w-[75%] h-auto'>
         {/* Video */}
-        <div className='bg-white w-full h-[300px] sm:h-[450px] lg:h-[650px] rounded-lg overflow-hidden'>
+        <div className='w-full h-[300px] sm:h-[450px] lg:h-[650px] rounded-lg overflow-hidden'>
           <iframe 
           className='w-full h-full'
           // width="560" 
