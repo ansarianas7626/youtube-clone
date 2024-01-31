@@ -1,5 +1,6 @@
 import React from 'react'
 import { CiUser } from "react-icons/ci";
+import { useSelector } from 'react-redux';
 
 
 
@@ -9,8 +10,12 @@ const LiveChatMessage = ({chatData}) => {
 
     const {name, message} = chatData;
 
+    // Theme Mode
+    const mode = useSelector((store)=> store.app.toggleTheme);
+
+
   return (
-    <div className='w-full flex hover:bg-gray-100 cursor-pointer px-5 py-1'>
+    <div className={`${mode===true? "hover:bg-stone-800": "hover:bg-gray-100"} w-full flex cursor-pointer px-5 py-1`}>
         {/*  Profile pic */}
         <div className='flex items-center mr-1'>
             <div className='w-6 h-6 flex justify-center items-center overflow-hidden bg-gray-300 rounded-full mr-3'>
@@ -20,7 +25,7 @@ const LiveChatMessage = ({chatData}) => {
         </div>
 
         {/* name and chat message */}
-        <p className='text-sm'><span className='text-gray-600 font-semibold mr-2'>{name}</span>{message}</p>
+        <p className={`${mode===true? "text-white": "text-black"} text-sm`}><span className={`${mode===true? "text-gray-400": "text-gray-600"} font-semibold mr-2`}>{name}</span>{message}</p>
         
     </div>
   )

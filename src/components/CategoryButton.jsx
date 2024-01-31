@@ -1,6 +1,6 @@
 import React from 'react'
 import { YOUTUBE_API_KEY } from '../utils/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addVideos } from '../redux/videosSlice';
 
 const CategoryButton = ({ active, index, setActive, categoryData }) => {
@@ -26,10 +26,11 @@ const CategoryButton = ({ active, index, setActive, categoryData }) => {
 
   // console.log("from btn", categoryData)
 
-  
+  // Theme Mode
+  const mode = useSelector((store)=> store.app.toggleTheme);
 
   return (
-    <button onClick={handleClick} className={`${active === index ? "bg-black text-white" : "bg-gray-100 text-black hover:bg-gray-200"} px-3 py-[6px] h-fit text-sm rounded-md font-semibold cursor-pointer transition-all`}>{title}</button>
+    <button onClick={handleClick} className={`${active === index ? "bg-stone-800 text-white" : "bg-gray-100 text-black hover:bg-gray-200"} px-3 py-[6px] h-fit text-sm rounded-md font-semibold cursor-pointer transition-all`}>{title}</button>
   )
 }
 

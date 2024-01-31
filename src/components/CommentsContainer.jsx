@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Comment from './Comment'
 import { YOUTUBE_API_KEY } from '../utils/constants'
+import { useSelector } from 'react-redux';
 
 const CommentsContainer = ({ videoId }) => {
 
@@ -17,9 +18,12 @@ const CommentsContainer = ({ videoId }) => {
   useEffect(()=>{
     comments === null && fetchComments();
   },[])
+
+  // Theme Mode
+  const mode = useSelector((store)=> store.app.toggleTheme);
   
   return (
-    <div className='w-full min-h-fit pb-14'>
+    <div className={`${mode===true? "text-white" : "text-black"} w-full min-h-fit pb-14`}>
         <h3 className='font-bold text-xl my-4'>Comments</h3>
         <div className='flex flex-col gap-3'>
           {

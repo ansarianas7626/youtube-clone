@@ -3,20 +3,24 @@ import { MdHomeFilled, MdOutlineSubscriptions } from "react-icons/md";
 import { SiYoutubeshorts } from "react-icons/si";
 import { LiaYoutubeSquare } from "react-icons/lia";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 
 const ShortSideBar = () => {
+
+  // Theme Mode
+  const mode = useSelector((store)=> store.app.toggleTheme);
   
   return (
-    <div className="h-screen w-20 overflow-x-hidden scrollbar-hide sticky left-0">
+    <div className={`${mode===true? "bg-youTube-dark" : "bg-white"} h-screen w-20 overflow-x-hidden scrollbar-hide sticky left-0`}>
 
       <section className='px-1'>
         <ul>
-        <Link to="/"><li className='hover:bg-gray-100 py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center'><MdHomeFilled className='text-2xl mb-1'/>Home</li></Link>
-        <Link to="/shorts"><li className='hover:bg-gray-100 py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center'><SiYoutubeshorts className='text-2xl mb-1'/>Shorts</li></Link>
-          <li className='hover:bg-gray-100 py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center'><MdOutlineSubscriptions className='text-2xl mb-1'/>Subscription</li>
-          <li className='hover:bg-gray-100 py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center'><LiaYoutubeSquare className='text-2xl mb-1'/>You</li>
+          <Link to="/"><li className={`${mode===true ? "text-white" : "text-black"} hover:bg-gray-100 hover:text-black py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center`}><MdHomeFilled className='text-2xl mb-1'/>Home</li></Link>
+          <Link to="/shorts"><li className={`${mode===true ? "text-white" : "text-black"} hover:bg-gray-100 hover:text-black py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center`}><SiYoutubeshorts className='text-2xl mb-1'/>Shorts</li></Link>
+          <li className={`${mode===true ? "text-white" : "text-black"} hover:bg-gray-100 hover:text-black py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center`}><MdOutlineSubscriptions className='text-2xl mb-1'/>Subscription</li>
+          <li className={`${mode===true ? "text-white" : "text-black"} hover:bg-gray-100 hover:text-black py-4 text-xs rounded-lg cursor-pointer transition-all flex flex-col justify-center items-center`}><LiaYoutubeSquare className='text-2xl mb-1'/>You</li>
         </ul>
       </section>
 

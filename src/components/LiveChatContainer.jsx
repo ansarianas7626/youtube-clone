@@ -24,13 +24,16 @@ const LiveChatContainer = () => {
         }
     },[])
 
+    // Theme Mode
+    const mode = useSelector((store)=> store.app.toggleTheme);
+
 
   return (
-    <div className='flex flex-col w-full h-[650px] rounded-lg border-[1px] border-stone-200'>
+    <div className={`${mode===true? "border-stone-600": "border-stone-200"} flex flex-col w-full h-[650px] rounded-lg border-[1px]`}>
         {/* head */}
-        <div className='border-b-[1px] border-stone-200'>
+        <div className={`${mode===true? "border-stone-600": "border-stone-200"} border-b-[1px]`}>
             <div className='flex justify-between items-center pl-5 pr-2 py-1'>
-                <h2>Live chat</h2>
+                <h2 className={`${mode===true? "text-white": "text-black"}`}>Live chat</h2>
                 <div className='hover:bg-gray-200 w-10 h-10 flex justify-center items-center rounded-full text-xl cursor-pointer'>
                     <HiOutlineDotsVertical />
                 </div>
@@ -48,7 +51,7 @@ const LiveChatContainer = () => {
             dispatch(addMessage({name: "Guest", message: liveMessage}))
             setLiveMessage("");
         }}
-         className='h-fit w-full flex items-center border-t-[1px] border-stone-200 p-2'>
+         className={`${mode===true? "border-stone-600": "border-stone-200"} h-fit w-full flex items-center border-t-[1px] border-stone-200 p-2`}>
             <input  
             className='h-full w-full rounded-full outline-none px-3 py-2 bg-gray-100 placeholder:text-gray-600 mr-2 focus:bg-gray-200' 
             type="text" 

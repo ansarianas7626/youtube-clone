@@ -17,8 +17,11 @@ const VideoContainer = () => {
   const status = useOnlineStatus();
   const videos = useSelector((state)=>state.videos?.videosData);
 
+  // Theme Mode
+  const mode = useSelector((store)=> store.app.toggleTheme);
+
   return (
-    <div className={`h-[calc(100vh-56px)] w-full ${isMenuOpen? "md:w-[calc(100vw-80px)]" : "md:w-[calc(100vw-240px)]"} flex flex-col`}>
+    <div className={`${mode===true? "bg-youTube-dark" : "bg-white"} h-[calc(100vh-56px)] w-full ${isMenuOpen? "md:w-[calc(100vw-80px)]" : "md:w-[calc(100vw-240px)]"} flex flex-col`}>
         <CategoryList/>
 
         {videos !== null ? 

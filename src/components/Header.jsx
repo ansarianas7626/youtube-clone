@@ -10,6 +10,9 @@ import { toggleMenu } from '../redux/appSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import { cacheResults } from '../redux/searchSlice';
 import { addVideos } from '../redux/videosSlice';
+import ThemeToggleBtn from './ThemeToggleBtn';
+import youtube_logo from "../assets/YouTube_Logo.png"
+import { PiYoutubeLogoFill } from "react-icons/pi";
 
 
 
@@ -24,6 +27,9 @@ const Header = () => {
   const searchInputRef = useRef();
 
   const searchCache = useSelector((store)=> store.search)
+
+  // Theme Mode
+  const mode = useSelector((store)=> store.app.toggleTheme);
 
 
   const handleToggle = ()=>{
@@ -98,18 +104,20 @@ const Header = () => {
   }
   
   return (
-    <div className='w-full h-fit grid grid-cols-12 md:flex items-center justify-between px-2 pb-3 md:pb-0 md:gap-0 md:pl-4 md:pr-6 sticky top-0 z-10 shadow-md'>
+    <div className={`${mode===true ? "bg-youTube-dark" : "bg-white"} w-full h-fit grid grid-cols-12 md:flex items-center justify-between px-2 pb-3 md:pb-0 md:gap-0 md:pl-4 md:pr-6 sticky top-0 z-10 shadow-md`}>
 
       {/* hamburger & logo */}
       <div className='flex items-center space-x-1 order-1 col-span-10'>
-        <div onClick={handleToggle} className='hidden w-10 h-10 md:flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'>
+        <div onClick={handleToggle} className={`${mode===true? "text-white hover:bg-stone-800" : ""} hidden w-10 h-10 md:flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all`}>
           <LiaBarsSolid />
         </div>
-          <div className='flex items-center cursor-pointer'>
-              <Link to="/">
-                <img className='h-14' src={YOUTUBE_LOGO} alt="YouTube-Logo" />
-              </Link>
-          </div>
+        <Link to="/">
+        <div className='w-fit h-14 flex items-center cursor-pointer'>
+          {/* <img className='h-14' src={youtube_logo} alt="YouTube-Logo" /> */}
+          <PiYoutubeLogoFill className='text-3xl text-youTube-red'/>
+          <span className={`${mode===true?"text-white":"text-black"} font-bold text-lg`}>YouTube</span>
+        </div>
+        </Link>
       </div>
 
       {/* Search Bar */}
@@ -119,7 +127,9 @@ const Header = () => {
         <div className='w-full md:w-[40vw] lg:w-[32vw] flex items-center h-10'>
           <div className='w-[90%] flex flex-col h-full relative'>
             <input 
-            className='h-full w-full outline-none  px-3 placeholder:font-semibold rounded-l-full border-[1px] border-stone-300 focus:border-blue-800' type="text" placeholder='Search'
+            className={`${mode === true? "bg-youTube-dark border-stone-700 placeholder:text-stone-400 text-white" : "bg-white border-stone-300 placeholder:text-black text-black"} h-full w-full outline-none px-3 rounded-l-full border-[1px]  focus:border-blue-800`} 
+            type="text" 
+            placeholder='Search'
             value={searchQuery}
             onChange={(e)=>{setSearchQuery(e.target.value)}}
             onFocus={()=>setshowSearchResults(true)}
@@ -128,7 +138,7 @@ const Header = () => {
             />
 
             {/* Search Suggestion list */}
-            {(showSearchResults && suggestions.length >=1) && <div className='w-full h-fit bg-white absolute top-10 rounded-lg py-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)]'>
+            {(showSearchResults && suggestions.length >=1) && <div className={`w-full h-fit bg-white absolute top-10 rounded-lg py-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)]`}>
               <ul>
                 {suggestions?.map((suggsn, idx) => <li onClick={()=>fetchVideoBySearchhcKeyword(suggsn)} 
                 key={suggsn} 
@@ -140,20 +150,21 @@ const Header = () => {
             </div>}
           </div>
 
-          <button onClick={fetchVideoBySearchhcKeyword} className='text-2xl bg-gray-100 hover:bg-gray-200 h-full px-5 flex justify-center items-center border-[1px] border-stone-300 transition-all rounded-r-full border-l-0'>
+          <button onClick={fetchVideoBySearchhcKeyword} className={`${mode===true ? "bg-stone-800 text-stone-300 border-stone-700" : "bg-gray-100 text-black hover:bg-gray-200 border-stone-300"} text-2xl  h-full px-5 flex justify-center items-center border-[1px] rounded-r-full border-l-0`}>
             <IoIosSearch />
           </button>
         </div>
 
         {/* Microphone */}
-        <span className='w-10 h-10 flex justify-center items-center rounded-full text-lg cursor-pointer bg-gray-100 hover:bg-gray-200 transition-all ml-5'><FaMicrophone /></span>
+        <span className={`${mode === true? "text-white bg-stone-800 hover:bg-stone-700" : "text-black hover:bg-gray-200"} w-10 h-10 flex justify-center items-center rounded-full text-lg cursor-pointer bg-gray-100 hover:bg-gray-200 ml-5`}><FaMicrophone /></span>
       </div>
 
       {/* Right icons */}
       <div className='flex items-center gap-2 pr-5 order-2 col-span-2'>
-        <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'><RiLiveLine /></div>
-        <div className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl hover:bg-gray-200 transition-all'><CiBellOn /></div>
-        <div className='w-8 h-8 flex justify-center items-center cursor-pointer rounded-full text-2xl bg-stone-400 transition-all'></div>
+        <ThemeToggleBtn/>
+        <div className={`${mode === true? "text-white hover:bg-stone-800" : "text-black hover:bg-gray-200"} w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl transition-all`}><RiLiveLine /></div>
+        <div className={`${mode === true? "text-white hover:bg-stone-800" : "text-black hover:bg-gray-200"} w-10 h-10 flex justify-center items-center cursor-pointer rounded-full text-2xl transition-all`}><CiBellOn /></div>
+        <div className='w-8 h-8 flex justify-center items-center cursor-pointer rounded-full text-2xl bg-stone-200 transition-all'></div>
       </div>
 
     </div>

@@ -7,8 +7,12 @@ export default {
   theme: {
     extend: {
       colors:{
-        "youTube-red": "#fe0000"
-      }
+        "youTube-red": "#fe0000",
+        "youTube-dark": "#0f0f0f"
+      },
+      fontFamily: {
+        TradeGothicLTBold: [""],
+      },
     },
   },
   plugins: [],

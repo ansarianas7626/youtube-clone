@@ -44,6 +44,9 @@ const VideoCard = ({ videoData }) => {
   
   
   // console.log("kind is", kind)
+
+  // Theme Mode
+  const mode = useSelector((store)=> store.app.toggleTheme);
   
 
   return (
@@ -58,9 +61,9 @@ const VideoCard = ({ videoData }) => {
         </div>
 
         <div className='w-fit h-fit flex flex-col'>
-            <p className='font-semibold'>{stringTruncate(title, 50)}</p>
-            <span className=''>{channelTitle}</span>
-            <span className='text-sm font-semibold'>{formatViewCount(statistics?.viewCount)} views 3 hours ago</span>
+            <p className={`font-semibold ${mode==true? "text-white" : "text-black"}`}>{stringTruncate(title, 50)}</p>
+            <span className={`${mode==true? "text-white" : "text-black"}`}>{channelTitle}</span>
+            <span className={`${mode==true? "text-white" : "text-black"} text-sm font-semibold`}>{formatViewCount(statistics?.viewCount)} views 3 hours ago</span>
         </div>
       </div>
 
