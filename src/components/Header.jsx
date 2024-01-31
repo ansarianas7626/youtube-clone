@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { IoIosSearch } from "react-icons/io";
 import { FaMicrophone } from "react-icons/fa6";
 import { RiLiveLine } from "react-icons/ri";
@@ -20,6 +20,8 @@ const Header = () => {
   const [showSearchResults, setshowSearchResults] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  const [activeSuggestion, setActiveSuggestion] = useState(0)
+  const searchInputRef = useRef();
 
   const searchCache = useSelector((store)=> store.search)
 
@@ -29,6 +31,7 @@ const Header = () => {
   }
 
   useEffect(()=>{
+    setActiveSuggestion(0);
     const timer = setTimeout(() =>{
       if(searchCache[searchQuery]){
         setSuggestions(searchCache[searchQuery])
@@ -77,9 +80,25 @@ const Header = () => {
     navigate("/")
   }
 
+  const HandleKeyDown = (e)=>{
+    if(e.key==="ArrowDown" && suggestions?.length>0){
+      e.preventDefault();
+      setActiveSuggestion((prevIndex)=>(prevIndex < suggestions.length - 1? prevIndex+1: prevIndex))
+    }
+    else if(e.key==="ArrowUp" && suggestions?.length>0){
+      e.preventDefault();
+      setActiveSuggestion((prevIndex)=>(prevIndex > 0 ? prevIndex-1: prevIndex))
+    }
+    else if(e.key==="Enter" && suggestions?.length>0){
+      e.preventDefault();
+      setSearchQuery(suggestions[activeSuggestion]);
+      fetchVideoBySearchhcKeyword(suggestions[activeSuggestion]);
+      searchInputRef.current.blur();
+    }
+  }
   
   return (
-    <div className='w-full h-14 grid grid-cols-12 md:flex items-center justify-between px-2 pb-3 md:pb-0 md:gap-0 md:pl-4 md:pr-6 sticky top-0 z-10 shadow-md'>
+    <div className='w-full h-fit grid grid-cols-12 md:flex items-center justify-between px-2 pb-3 md:pb-0 md:gap-0 md:pl-4 md:pr-6 sticky top-0 z-10 shadow-md'>
 
       {/* hamburger & logo */}
       <div className='flex items-center space-x-1 order-1 col-span-10'>
@@ -104,12 +123,19 @@ const Header = () => {
             value={searchQuery}
             onChange={(e)=>{setSearchQuery(e.target.value)}}
             onFocus={()=>setshowSearchResults(true)}
+            onKeyDown={HandleKeyDown} 
+            ref={searchInputRef}
             />
 
             {/* Search Suggestion list */}
             {(showSearchResults && suggestions.length >=1) && <div className='w-full h-fit bg-white absolute top-10 rounded-lg py-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)]'>
               <ul>
-                {suggestions?.map((s) => <li onClick={()=>fetchVideoBySearchhcKeyword(s)} key={s} className='flex items-center hover:bg-stone-200 px-3 py-1 cursor-default'><IoIosSearch className='mr-3'/>{s}</li>)}
+                {suggestions?.map((suggsn, idx) => <li onClick={()=>fetchVideoBySearchhcKeyword(suggsn)} 
+                key={suggsn} 
+                className={`flex items-center hover:bg-stone-200 px-3 py-1 cursor-default ${idx===activeSuggestion? "bg-stone-200" : ""}`}>
+                  <IoIosSearch className='mr-3'/>
+                  {suggsn}
+                </li>)}
               </ul>
             </div>}
           </div>

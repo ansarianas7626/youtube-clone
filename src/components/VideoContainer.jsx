@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import VideoCardShimmer from './VideoCardShimmer'
 import useVideos from '../Hooks/useVideos'
 import { YOUTUBE_API_KEY } from '../utils/constants'
+import useOnlineStatus from '../Hooks/useOnlineStatus'
 
 const VideoContainer = () => {
 
@@ -13,6 +14,7 @@ const VideoContainer = () => {
   
 
   useVideos();
+  const status = useOnlineStatus();
   const videos = useSelector((state)=>state.videos?.videosData);
 
   return (
@@ -33,8 +35,12 @@ const VideoContainer = () => {
           {
             Array(15).fill().map((shimmerCard, idx)=> <VideoCardShimmer key={idx}/>)
           }
-        </div>}
+        </div>
+        }
 
+        {/* {status== "offline" && <div className='w-full h-full'>
+          <h1 className='text-3xl'>Offline</h1>
+        </div>} */}
     </div>
   )
 }
