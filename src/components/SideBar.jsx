@@ -32,7 +32,7 @@ const SideBar = () => {
     <div 
     onMouseEnter={()=>{setShowSliderThumb(!showSliderThumb)}} 
     onMouseLeave={()=>{setShowSliderThumb(!showSliderThumb)}} 
-    className={`${mode===true ? "bg-youTube-dark " : "bg-white"}h-screen max-w-60 px-3 overflow-scroll overflow-x-hidden ${showSliderThumb? "" : "scrollbar-hide"} sticky left-0`}>
+    className={`${mode===true ? "bg-youTube-dark " : "bg-white"} h-screen max-w-60 px-3 overflow-scroll overflow-x-hidden ${showSliderThumb? "" : "scrollbar-hide"} sticky left-0`}>
 
         <ul className={`${mode===true ? "text-white" : " text-black "} pt-3`}>
           <Link to="/"><li onClick={(e)=>{setActiveTab(e.currentTarget.id)}} id="0" className={`${activeTab == 0 ? "bg-gray-100 text-black" : ""} hover:bg-gray-100 hover:text-black px-2 py-2 rounded-lg cursor-pointer transition-all flex items-center`}>
@@ -207,7 +207,7 @@ const SideBar = () => {
           <Seperator/>
         </ul>
 
-      <div className='${activeTab == 0 ? "bg-gray-100 text-black" : ""} h-60 flex flex-co hover:text-blackl py-3 pl-2 pr-3 space-y-3 text-sm font-semibold text-stone-500 mr-1'>
+      <div className={`${activeTab == 0 ? "bg-gray-100 text-black" : ""} h-60 flex flex-col py-3 pl-2 pr-3 space-y-3 text-sm font-semibold text-stone-500 mr-1`}>
         <p>About Press Copyright Contact us Creator Advertise Developers</p>
         <p>Terms Privacy Policy & SafetyHow YouTube worksTest new features</p>
         <p className='text-stone-400 text-xs'>© 2023 Google LLC</p>

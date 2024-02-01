@@ -6,9 +6,11 @@ import { useSelector } from 'react-redux';
 const CommentsContainer = ({ videoId }) => {
 
   const [comments, setComments] = useState(null);
+  // console.log(comments);
 
   const fetchComments = async()=>{
-    const data = await fetch(`https://www.googleapis.com/youtube/v3/commentThreads?key=${YOUTUBE_API_KEY}&textFormat=plainText&part=snippet&videoId=${videoId}&maxResults=50`);
+    // const data = await fetch(`https://www.googleapis.com/youtube/v3/commentThreads?key=${YOUTUBE_API_KEY}&textFormat=plainText&part=snippet&videoId=${videoId}&maxResults=100`);
+    const data = await fetch(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&order=relevance&textFormat=plainText&videoId=${videoId}&key=${YOUTUBE_API_KEY}`);
     const json = await data.json();
     setComments(json.items);
     // console.log(json.items);
@@ -23,9 +25,9 @@ const CommentsContainer = ({ videoId }) => {
   const mode = useSelector((store)=> store.app.toggleTheme);
   
   return (
-    <div className={`${mode===true? "text-white" : "text-black"} w-full min-h-fit pb-14`}>
-        <h3 className='font-bold text-xl my-4'>Comments</h3>
-        <div className='flex flex-col gap-3'>
+    <div className={`${mode===true? "text-white" : "text-black"} w-full min-h-fit`}>
+        <h3 className='font-bold text-xl pb-4'>{comments?.length} Comments</h3>
+        <div className='h-full flex flex-col gap-3 pb-14'>
           {
             comments?.map((comment)=> <Comment
             key={comment.id}

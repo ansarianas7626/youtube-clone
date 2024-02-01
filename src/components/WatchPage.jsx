@@ -15,6 +15,9 @@ import LiveChatContainer from './LiveChatContainer';
 import useVideos from '../Hooks/useVideos';
 import { YOUTUBE_API_KEY } from '../utils/constants';
 import { addWatchpageVideo } from '../redux/videosSlice';
+import formatViewCount from '../utils/formatViewCount';
+import VideoDescription from './VideoDescription';
+import { BsThreeDots } from "react-icons/bs";
 
 const WatchPage = () => {
 
@@ -22,6 +25,7 @@ const WatchPage = () => {
   const [searchParams] = useSearchParams()
   
   const currentVideo = useSelector((state)=>state.videos.watchPageVideo);
+  const [isExpanded, setIsExpanded] = useState(false);
   
   const fetchCurrentVideo = async()=>{
     const data = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&hl=en&id=${searchParams.get("v")}&regionCode=IN&key=${YOUTUBE_API_KEY}`)
@@ -46,11 +50,11 @@ const WatchPage = () => {
 
 
   return (
-    <div className={`${mode===true ? "bg-youTube-dark" : "bg-white"} lg:w-[calc(100vw-80px)] flex justify-between px-2 lg:pl-5 pt-5 lg:pt-7 h-screen overflow-y-scroll`}>
-      {/* Left container */}
+    <div className={`${mode===true ? "bg-youTube-dark" : "bg-white"} lg:w-[calc(100vw-80px)] flex justify-between lg:pl-5 pt-5 lg:pt-7 h-screen overflow-y-scroll`}>
+      {/* Left container or bottom container on mobile */}
       <div className='w-full lg:w-[75%] h-auto'>
         {/* Video */}
-        <div className='w-full h-[300px] sm:h-[450px] lg:h-[650px] rounded-lg overflow-hidden'>
+        <div className='w-full h-[300px] sm:h-[450px] lg:h-[650px] md:rounded-lg overflow-hidden'>
           <iframe 
           className='w-full h-full'
           // width="560" 
@@ -63,13 +67,13 @@ const WatchPage = () => {
         </div>
         
         {/* info container */}
-        <div className='flex flex-col space-y-4 pt-3 '>
+        <div className='flex flex-col space-y-4 pt-3 px-2'>
           {/* Video title */}
           <h3 className={`${mode===true? "text-white" : "text-black"} font-semibold text-xl`}>{currentVideo?.[0]?.snippet?.title}</h3>
           
           {/* channel detail and button container */}
           <div className='flex flex-col lg:flex-row space-y-5 lg:space-y-0 justify-between'>
-            {/* left */}
+            {/* left buttons */}
             <div className='flex justify-between lg:justify-normal'>
               {/* channel logo */}
               <div className='flex'>
@@ -82,37 +86,35 @@ const WatchPage = () => {
                   <span className={`${mode===true? "text-white" : "text-black"} text-xs`}>41.1 M Subscribers</span>
                 </div>
               </div>
-              <button className={`${mode===true? "bg-white text-black hover:bg-stone-200" : "bg-black text-white hover:bg-stone-900"}  rounded-3xl px-4 py-2 h-fit font-semibold lg:mx-3`}>subscribe</button>
+              <button className={`${mode===true? "bg-white text-black hover:bg-stone-200" : "bg-black text-white hover:bg-stone-900"} rounded-3xl px-3 md:px-4 py-2 h-fit font-semibold mx-3`}>subscribe</button>
             </div>
 
-            {/* right */}
+            {/* like share subscribe buttons */}
             <div className='flex space-x-3 overflow-auto scrollbar-hide'>
-              <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-3xl px-4 py-2 font-semibold h-fit flex items-center'><AiOutlineLike className='mr-2'/>Like</button>
-              <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-3xl px-4 py-2 font-semibold h-fit flex items-center'><PiShareFatLight className='mr-2'/>Share</button>
-              <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-3xl px-4 py-2 font-semibold h-fit flex items-center'><TfiDownload className='mr-2'/>Download</button>
-              <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-3xl px-4 py-2 font-semibold h-fit flex items-center'><HiOutlineScissors className='mr-2'/>Clips</button>
-              <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-3xl px-4 py-2 font-semibold h-fit flex items-center'><RiPlayListAddFill className='mr-2'/>Save</button>
-              <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-full px-[14px] py-2 font-semibold h-fit flex items-center'>...</button>
+              <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-3xl px-3 md:px-4 py-1 md:py-2 font-semibold h-fit flex items-center'><AiOutlineLike className='mr-2'/>Like</button>
+              <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-3xl px-3 md:px-4 py-1 md:py-2 font-semibold h-fit flex items-center'><PiShareFatLight className='mr-2'/>Share</button>
+              <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-3xl px-3 md:px-4 py-1 md:py-2 font-semibold h-fit flex items-center'><TfiDownload className='mr-2'/>Download</button>
+              <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-3xl px-3 md:px-4 py-1 md:py-2 font-semibold h-fit flex items-center'><HiOutlineScissors className='mr-2'/>Clips</button>
+              <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-3xl px-3 md:px-4 py-1 md:py-2 font-semibold h-fit flex items-center'><RiPlayListAddFill className='mr-2'/>Save</button>
+              <button className='bg-gray-100 hover:bg-gray-200 transition-all rounded-full p-2 md:p-3 font-semibold h-fit flex items-center'><BsThreeDots /></button>
             </div>
           </div>
 
           {/* description box container */}
-          <div className={`${mode===true? "bg-stone-700 bg-opacity-50 text-white" : "bg-gray-100 text-black"} flex flex-col p-2 space-y-2 w-full min-h-28 overflow-hidden  rounded-lg`}>
-            <span>{currentVideo?.[0]?.statistics?.viewCount} Views</span>
-            <span className='text-sm'>{currentVideo?.[0]?.snippet?.description}</span>
-            <span className='text-sm cursor-pointer'>more...</span>
-          </div>
-        </div>
 
-        {/* comments container */}
-        <CommentsContainer videoId = {searchParams.get("v")}/>
+          <VideoDescription/>
+
+          {/* comments container */}
+          <CommentsContainer videoId = {searchParams.get("v")}/>
+        </div>
 
       </div>
 
       {/* Right Container */}
       {/* <RecommentVideosContainer/> */}
       <div className='lg:w-[24%] hidden lg:block'>
-        <LiveChatContainer/>
+        {/* <LiveChatContainer/> */}
+        <RecommentVideosContainer/>
       </div>
     </div>
   )

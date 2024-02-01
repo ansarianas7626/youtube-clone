@@ -3,7 +3,7 @@ import RecoomendVideoCard from './RecoomendVideoCard'
 
 const RecommentVideosContainer = () => {
   return (
-    <div className='flex flex-col gap-5 w-[24%] h-fit'>
+    <div className='flex flex-col gap-5 w-fit h-fit'>
     <RecoomendVideoCard/>
     <RecoomendVideoCard/>
     <RecoomendVideoCard/>
