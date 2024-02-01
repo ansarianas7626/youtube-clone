@@ -141,7 +141,7 @@ const Header = () => {
               ref={searchInputRef}
               />
 
-              <span onClick={()=>setSearchQuery("")} className='absolute text-2xl right-2 top-[50%] -translate-y-[50%] cursor-pointer text-stone-500 '><RxCross1 /></span>
+              {searchQuery.length> 0 && <span onClick={()=>setSearchQuery("")} className='absolute text-2xl right-2 top-[50%] -translate-y-[50%] cursor-pointer text-stone-500 '><RxCross1 /></span>}
             </div>
 
             {/* Search Suggestion list */}
