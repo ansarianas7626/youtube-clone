@@ -29,7 +29,7 @@ const ThemeToggleBtn = () => {
         {/* Slider range */}
         <span
           className={`slider mx-2 flex h-6 w-[40px] items-center rounded-full p-1 duration-200 ${
-            toggleTheme ? 'bg-white' : 'bg-[#CCCCCE]'
+            toggleTheme ? 'bg-[#CCCCCE]' : 'bg-[#CCCCCE]'
           }`}
         >
         

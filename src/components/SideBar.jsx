@@ -207,7 +207,7 @@ const SideBar = () => {
           <Seperator/>
         </ul>
 
-      <div className={`${activeTab == 0 ? "bg-gray-100 text-black" : ""} h-60 flex flex-col py-3 pl-2 pr-3 space-y-3 text-sm font-semibold text-stone-500 mr-1`}>
+      <div className={`${mode===true ? "text-stone-400" : "text-stone-500"} h-60 flex flex-col py-3 pl-2 pr-3 space-y-3 text-sm font-semibold mr-1`}>
         <p>About Press Copyright Contact us Creator Advertise Developers</p>
         <p>Terms Privacy Policy & SafetyHow YouTube worksTest new features</p>
         <p className='text-stone-400 text-xs'>© 2023 Google LLC</p>

@@ -105,7 +105,7 @@ const Header = () => {
   }
   
   return (
-    <div className={`${mode===true ? "bg-youTube-dark" : "bg-white"} w-full h-fit grid grid-cols-12 md:flex items-center justify-between px-2 md:px-4 pb-3 md:pb-0 sticky top-0 z-10 shadow-md`}>
+    <div className={`${mode===true ? "bg-youTube-dark" : "bg-white"} w-full h-fit grid grid-cols-12 md:flex items-center justify-between px-2 md:px-4 pb-3 md:pb-0 sticky top-0 z-10 shadow-sm`}>
 
       {/* hamburger & logo */}
       <div className='flex items-center order-1 col-span-5'>
@@ -170,7 +170,7 @@ const Header = () => {
       <div className='flex flex-row-reverse items-center gap-2 pr-5 order-2 col-span-7'>
         
 
-        <div className='flex items-center space-x-1 cursor-pointer border-[1px] border-stone-300 rounded-full text-2xl md:px-2 md:py-1 p-1'>
+        <div className={`${mode === true? "text-white" : "text-black"} flex items-center space-x-1 cursor-pointer border-[1px] border-stone-300 rounded-full text-2xl md:px-2 md:py-1 p-1`}>
           <PiUserCircleThin/>
           <span className='text-sm hidden md:block'>Sign In</span>
         </div>
