@@ -78,12 +78,12 @@ const Header = () => {
   }
 
   const fetchVideoBySearchhcKeyword = async(s)=>{
-    setSearchQuery(s);
     setshowSearchResults(false);
     const data = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&eventType=none&maxResults=50&order=relevance&q=${searchQuery}&regionCode=IN&safeSearch=none&key=${YOUTUBE_API_KEY}`);
     const json = await data.json();
     // console.log("searched videos",json.items);
     dispatch(addVideos(json.items));
+    searchInputRef.current.blur();
     navigate("/")
   }
 
@@ -127,7 +127,7 @@ const Header = () => {
       <div className='flex items-center order-3 md:order-2 col-span-12'>
 
         {/* seach input and button */}
-        <div className='w-full md:w-[40vw] lg:w-[32vw] flex items-center h-10'>
+        <form onSubmit={(e)=>{e.preventDefault()}} className='w-full md:w-[40vw] lg:w-[32vw] flex items-center h-10'>
           <div className='w-[90%] flex flex-col h-full relative'>
             <div className='relative h-full w-full'>
               <input 
@@ -160,7 +160,7 @@ const Header = () => {
           <button onClick={fetchVideoBySearchhcKeyword} className={`${mode===true ? "bg-stone-800 text-stone-300 border-stone-700" : "bg-gray-100 text-black hover:bg-gray-200 border-stone-300"} text-2xl  h-full px-5 flex justify-center items-center border-[1px] rounded-r-full border-l-0`}>
             <IoIosSearch />
           </button>
-        </div>
+        </form>
 
         {/* Microphone */}
         <span className={`${mode === true? "text-white bg-stone-800 hover:bg-stone-700" : "text-black hover:bg-gray-200"} w-10 h-10 flex justify-center items-center rounded-full text-lg cursor-pointer bg-gray-100 hover:bg-gray-200 ml-5`}><FaMicrophone /></span>

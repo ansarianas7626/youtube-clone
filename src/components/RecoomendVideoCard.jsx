@@ -10,9 +10,9 @@ const RecoomendVideoCard = () => {
 
       {/* info */}
       <div className='flex flex-col'>
-        <h4 className='text-sm font-semibold'>Going to CHINA 🇨🇳 on BULLET TRAIN</h4>
-        <span className='text-sm'>yatri doctor</span>
-        <span className='text-sm'>29K views 2 hours ago</span>
+        <h4 className='text-[13px] font-semibold pt-[2px]'>Going to CHINA 🇨🇳 on BULLET TRAIN</h4>
+        <span className='text-sm text-gray-500'>yatri doctor</span>
+        <span className='text-sm text-gray-500'>29K views 2 hours ago</span>
       </div>
     </div>
   )

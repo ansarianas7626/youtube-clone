@@ -2,7 +2,7 @@ import React from 'react'
 import { MdHomeFilled, MdOutlineSubscriptions } from "react-icons/md";
 import { SiYoutubeshorts } from "react-icons/si";
 import { LiaYoutubeSquare } from "react-icons/lia";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 
@@ -11,9 +11,10 @@ const ShortSideBar = () => {
 
   // Theme Mode
   const mode = useSelector((store)=> store.app.toggleTheme);
+  let location = useLocation();
   
   return (
-    <div className={`${mode===true? "bg-youTube-dark" : "bg-white"} h-screen w-20 overflow-x-hidden scrollbar-hide sticky left-0`}>
+    <div className={`${mode===true? "bg-youTube-dark" : "bg-white"} h-screen w-20 overflow-x-hidden scrollbar-hide sticky left-0 ${location.pathname == '/watch'? "invisible" : ''}`}>
 
       <section className='px-1'>
         <ul>

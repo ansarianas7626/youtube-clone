@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SideBar from './components/SideBar'
 import ShortSideBar from './components/ShortSideBar'
 import { useSelector } from 'react-redux'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Header from './components/Header'
 import LoadingBar from 'react-top-loading-bar'
 

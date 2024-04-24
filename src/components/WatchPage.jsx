@@ -50,11 +50,11 @@ const WatchPage = () => {
 
 
   return (
-    <div className={`${mode===true ? "bg-youTube-dark" : "bg-white"} lg:w-[calc(100vw-80px)] flex justify-between lg:pl-5 pt-5 lg:pt-7 h-screen overflow-y-scroll`}>
+    <div className={`${mode===true ? "bg-youTube-dark" : "bg-white"} lg:w-[calc(100vw-80px)] flex gap-6 lg:pl-5 pt-5 lg:pt-7 h-screen overflow-y-scroll`}>
       {/* Left container or bottom container on mobile */}
-      <div className='w-full lg:w-[75%] h-auto'>
+      <div className='w-full lg:w-[1280px] h-auto'>
         {/* Video */}
-        <div className='w-full h-[300px] sm:h-[450px] lg:h-[650px] md:rounded-lg overflow-hidden'>
+        <div className='w-full h-[300px] sm:h-[450px] lg:h-[720px] md:rounded-xl overflow-hidden'>
           <iframe 
           className='w-full h-full'
           // width="560" 
@@ -112,7 +112,7 @@ const WatchPage = () => {
 
       {/* Right Container */}
       {/* <RecommentVideosContainer/> */}
-      <div className='lg:w-[24%] hidden lg:block'>
+      <div className='lg:w-[400px] hidden lg:block'>
         {/* <LiveChatContainer/> */}
         <RecommentVideosContainer/>
       </div>
